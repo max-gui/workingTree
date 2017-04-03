@@ -102,13 +102,6 @@ var getcms_circuit_device_key_q = function (wfId, callback) {
     return deffered.promise.nodeify(callback);
 };
 
-router.get('/union_key/:wfId', function (req, res) {
-    var promise = getcms_circuit_device_key_q(req.params.wfId);
-    promise.then(function (data) {
-        res.send(data);
-    });
-});
-
 var getcms_circuit_key_q = function (wfId, recall) {
     var deffered = Q.defer();
         
@@ -129,7 +122,12 @@ var getcms_circuit_key_q = function (wfId, recall) {
     return deffered.promise.nodeify(recall);
 };
 
-
+router.get('/union_key/:wfId', function (req, res) {
+    var promise = getcms_circuit_device_key_q(req.params.wfId);
+    promise.then(function (data) {
+        res.send(data);
+    });
+});
 
 router.get('/:deviceUniKey', function (req, res) {
     console.log(req.path);

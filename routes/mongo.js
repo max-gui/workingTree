@@ -1,23 +1,23 @@
 
 var MongoClient = require('mongodb').MongoClient;
 
-var url = 'mongodb://oudot.vicp.io:12307/fengdian_cms';
-var mongoInit = function (collectName, collectAction) {
-        MongoClient.connect(url, function (err, db) {
-            //assert.equal(null, err);
+// var url = 'mongodb://oudot.vicp.io:12307/fengdian_cms';
+// var this.mongoInit = function (collectName, collectAction) {
+//         MongoClient.connect(url, function (err, db) {
+//             //assert.equal(null, err);
 
-            console.log("Connected correctly to server.");
-            db.collection(collectName, collectAction);
-            db.close();
-        });
-    }
+//             console.log("Connected correctly to server.");
+//             db.collection(collectName, collectAction);
+//             db.close();
+//         });
+//     }
 
 var mongoHelp = {
-    myurl : url,
+    url : 'mongodb://oudot.vicp.io:12307/fengdian_cms',
 
     getcms_circuit : function (wfId, actData) {
         console.log(wfId);
-        mongoInit("cms_circuit", function (err, collection) {
+        this.mongoInit("cms_circuit", function (err, collection) {
             collection.find({ "wfId": wfId }).toArray(function (err, doc) {
                 //assert.equal(err, null);
                 var result = new Object();
@@ -42,7 +42,7 @@ var mongoHelp = {
     getcms_circuit_q : function (wfId, callback) {
         console.log(wfId);
         var deffered = Q.defer();
-        mongoInit("cms_circuit", function (err, collection) {
+        this.mongoInit("cms_circuit", function (err, collection) {
             collection.find({ "wfId": wfId }).toArray(function (err, doc) {
                 //assert.equal(err, null);
                 var result = new Object();
@@ -66,12 +66,20 @@ var mongoHelp = {
         return deffered.promise.nodeify(callback);
     },
 
-    mongoInit : mongoInit,
+    mongoInit : function (collectName, collectAction) {
+        MongoClient.connect(this.url, function (err, db) {
+            //assert.equal(null, err);
+
+            console.log("Connected correctly to server.");
+            db.collection(collectName, collectAction);
+            db.close();
+        });
+    },
 
     mongoFindAll : function (collectName, act) {
         var result = new Object();
 
-        mongoInit(collectName, function (err, collection) {
+        this.mongoInit(collectName, function (err, collection) {
             console.log("in");
             // Attempt to read (should fail due to the server not being a primary);
             collection.find().toArray(function (err, doc) {
@@ -95,7 +103,7 @@ var mongoHelp = {
     mongoAddOne : function (collectName, value, act) {
         var result = new Object();
 
-        mongoInit(collectName, function (err, collection) {
+        this.mongoInit(collectName, function (err, collection) {
             console.log("in");
             collection.insertOne(value, function (err, doc) {
                 //assert.equal(err, null);
@@ -114,7 +122,7 @@ var mongoHelp = {
     mongoPutOne : function (collectName, value, act) {
         var result = new Object();
 
-        mongoInit(collectName, function (err, collection) {
+        this.mongoInit(collectName, function (err, collection) {
             console.log("in");
             collection.findOneAndUpdate({ _id: value._id }
                 , { $set: value.body }
@@ -133,7 +141,7 @@ var mongoHelp = {
     mongoDeleteOne : function (collectName, value, act) {
         var result = new Object();
 
-        mongoInit(collectName, function (err, collection) {
+        this.mongoInit(collectName, function (err, collection) {
             console.log("in");
             collection.findOneAndDelete({ _id: value._id }
                 , function (err, r) {
