@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var ejs = require('ejs');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -12,11 +13,18 @@ var event_history = require('./routes/event_history');
 var mg_alarm = require('./routes/mg_alarm');
 var circuit_device = require('./routes/cms_circuit_device');
 
+/*路由*/
+var cms_channel = require('./routes/cms_channel');
+var cms_fan = require('./routes/cms_fan');
+var cms_mg = require('./routes/cms_mg');
+/*/路由*/
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.engine('html', ejs.__express);
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -32,6 +40,12 @@ app.use('/spectrum', spectrum);
 app.use('/event_history', event_history);
 app.use('/mg_alarm', mg_alarm);
 app.use('/circuit_device', circuit_device);
+
+/*路由*/
+app.use('/cms_channel',cms_channel);
+app.use('/cms_fan',cms_fan);
+app.use('/cms_mg',cms_mg);
+/*/路由*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -76,8 +90,8 @@ cms_device_status_sub.on("subscribe", function (channel, message) {
 });
 
 cms_device_info_sub.on("message", function (channel, message) {
-    console.log("sub channel " + channel + ": " + message);
-    var promise = getcms_device_info_q(req.params.tag);
+  console.log("sub channel " + channel + ": " + message);
+  var promise = getcms_device_info_q(req.params.tag);
   var pp = promise.then(function (data) {
   console.log(data);
     io.emit('cms_device_info', data);

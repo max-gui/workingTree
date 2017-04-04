@@ -1,0 +1,7 @@
+.btn-margin-wf{
+	margin-left:5px;
+}
+.btn-margin-wf>.glyphicon{
+	left:-5px;
+}
+

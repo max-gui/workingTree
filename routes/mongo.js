@@ -129,8 +129,6 @@ var mongoHelp = {
                 , function (err, r) {
                     //assert.equal(null, err);
                     //assert.equal(1, r.lastErrorObject.n);
-
-
                     result.message = "updated";
                     act(result);
                 });

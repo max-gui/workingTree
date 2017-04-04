@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="Author" content="F.Fang">
+    <meta name="Language" scheme="Language Codes" content="zh-CN">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>上海电气智能风电</title>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <!-- Bootstrap -->
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <!-- slider 滑动选值 -->
+    <link href="/stylesheets/bootstrap-slider.css" rel="stylesheet">
+    <link href="/stylesheets/skin-black.css" rel="stylesheet" id="skinCss">
+    <!-- mCustomScrollbar 滚动条 -->
+    <link href="/stylesheets/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/windfile.css"/>
+</head>
+<body>
+<!-- ***** HEADER ***** -->
+<header id="header">
+    <div class="logo pull-left">
+        <a href="云端-首页.html" title="上海电气智能风电风云">
+            <img src="/images/logo.png" width="120" height="30" alt="上海电气"> 智能风电
+            <img src="/images/logo-fengyun.png" width="40" height="30" alt="风云">
+        </a>
+        <small>智能监控系统</small>
+    </div>
+    <div class="wind-farm-name pull-left">
+        <img src="/tmp/user-logo.jpg">
+        临港风电场
+    </div>
+    <div class="member-info pull-right">
+        <span href="#">张三</span>
+    	<span class="dropdown">
+    		<a href="javascript:;" title="信息" class="dropdown-toggle" type="button" id="dropdownMenu1"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="glyphicon glyphicon-envelope"></span>
+                <sup class="red-dot"></sup>
+            </a>
+		    <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="javascript:;">信息第一条</a></li>
+                <li><a href="javascript:;">我是第二条信息</a></li>
+                <li><a href="javascript:;">点我点我！我是No.3</a></li>
+                <li><a href="javascript:;">我是最后一条</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="javascript:;">查看全部消息</a></li>
+            </ul>
+   		 </span>
+        <a href="#" class="glyphicon glyphicon-cog" title="设置"></a>
+        <a href="本地风场-登录页.html" class="glyphicon glyphicon-log-out" title="退出"></a>
+    </div>
+    <ul class="skin-btn list-inline pull-right">
+        <li id="skinBlack" class="skin-btn-black active" title="黑"></li>
+        <li id="skinWhite" class="skin-btn-white" title="白"></li>
+        <li id="skinCyan" class="skin-btn-cyan" title="青"></li>
+        <li id="skinBlue" class="skin-btn-blue" title="蓝"></li>
+        <li id="skinGreen" class="skin-btn-green" title="绿"></li>
+        <li id="skinRed" class="skin-btn-red" title="红"></li>
+    </ul>
+</header>
+<!-- ***** /HEADER ***** -->
+<!-- ***** NAV ***** -->
+<nav id="nav">
+    <div class="bread-crumb">
+        <strong>当前位置：</strong>
+        <a href="云端-首页.html">云端首页</a> &gt;
+        <a href="云端-智能监控-风场监控-视图.html">智能监控</a>&gt;
+        <a href="本地风场-监控-风场页-视图.html">监控</a> &gt; 单风场信息页面
+    </div>
+    <ul class="nav-list clearfix">
+        <li>
+            <a href="javascript:;">
+                <span class="glyphicon glyphicon-eye-open"></span> 监控
+                <span class="caret"></span></a>
+            <ul>
+                <li><a href="本地风场-监控-风场页-视图.html"><span class="glyphicon glyphicon-eye-open"></span> 实时监控</a></li>
+                <li><a href="本地风场-能量管理-能量控制.html"><span class="glyphicon glyphicon-tasks"></span> 能量管理</a></li>
+                <li><a href="本地风场-实时对比.html"><span class="glyphicon glyphicon-equalizer"></span> 实时对比</a></li>
+            </ul>
+        </li>
+        <li><a href="本地风场-视频监控-首页.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频监控</a></li>
+        <li><a href="本地风场-故障-故障处理.html"><span class="glyphicon glyphicon-alert"></span> 故障</a></li>
+        <li><a href="本地风场-报表-历史报表.html"><span class="glyphicon glyphicon-th"></span> 报表</a></li>
+        <li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
+        <li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
+        <li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
+        <li><a href="本地风场-CMS-图表.html" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
+        </li>
+        <li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
+    </ul>
+</nav>
+<!-- ***** /NAV ***** -->
+<!-- ***** TOOLBAR ***** -->
+<div id="toolbar" class="info-panel clearfix">
+    <button type="button" class="btn btn-sm pull-left btn-margin-wf">
+        <span class="glyphicon glyphicon-tasks"></span>配置
+    </button>
+    <button type="button" class="btn btn-sm pull-left btn-margin-wf">
+        <span class="glyphicon glyphicon-list"></span>报告
+    </button>
+    <button type="button" class="btn btn-sm pull-left btn-margin-wf">
+        <span class="glyphicon glyphicon-folder-open"></span>知识库
+    </button>
+    <!--<div class="pull-left"><strong>平均风速：</strong><big class="text-light">789</big>&nbsp;&nbsp;<strong>总无功：</strong><big class="text-light">2345.67</big>&nbsp;&nbsp;<strong>总有功：</strong><big class="text-light">1234.56</big></div>-->
+    <div class="pull-left fan-sample-con">
+        <div class="fan-sample pull-left clearfix">
+            <div class="pull-left fan-sample-icon fan-sample-icon-default">
+                <img src="/images/icons-fan-green.gif" class="img-circle">
+            </div>
+            <div class="fan-sample-txt"><a href="#">正常</a></div>
+        </div>
+        <div class="fan-sample pull-left clearfix">
+            <div class="pull-left fan-sample-icon fan-sample-icon-warning">
+                <img src="/images/icons-fan-green2.gif" class="img-circle"></div>
+            <div class="fan-sample-txt"><a href="#">告警</a></div>
+        </div>
+        <div class="fan-sample pull-left clearfix">
+            <div class="pull-left fan-sample-icon fan-sample-icon-danger">
+                <img src="/images/icons-fan-red.gif" class="img-circle"></div>
+            <div class="fan-sample-txt"><a href="#">故障</a></div>
+        </div>
+        <div class="fan-sample pull-left clearfix">
+            <div class="pull-left fan-sample-icon fan-sample-icon-warning">
+                <img src="/images/icons-fan-red.gif" class="img-circle"></div>
+            <div class="fan-sample-txt"><a href="#">预警</a></div>
+        </div>
+        <div class="fan-sample pull-left clearfix">
+            <div class="pull-left fan-sample-icon fan-sample-icon-danger2">
+                <img src="/images/icons-fan-gray.png" class="img-circle">
+            </div>
+            <div class="fan-sample-txt"><a href="#">通信中断</a></div>
+        </div>
+    </div>
+    <div class="dropdown pull-right icon-voice">
+        <a class="dropdown-toggle" href="javascript:;" title="关闭语音"
+           type="button" id="dropdownMenu1" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="true" data-hover="dropdown">
+            <span class="glyphicon glyphicon-volume-up"></span>
+            <sup class="red-dot"></sup>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#">关闭语音</a></li>
+            <li><a href="#">语音确定</a></li>
+        </ul>
+    </div>
+    <div class="pull-right clearfix"> <!--style="margin: 0 5px 0 15px;"-->
+        <input type="hidden" id="slidervalue" value="0">
+        <input type="text" id="ex1" data-slider-id='ex1Slider' data-slider-min="0" data-slider-max="2"
+               data-slider-step="1" data-slider-value="0" value="0">
+    </div>
+</div>
+<!-- ***** /TOOBAR ***** -->
+<!-- ***** FANCON ***** -->
+<div id="fanCon">
+    <%data.data.channels.channel.forEach(function(items,index){%>
+    <div class="main clearfix">
+        <!-- 分机组标题 -->
+
+        <!--存设备的唯一编号-->
+        <input type="hidden" value="<%=items.deviceUniKey%>"/>
+
+        <div class="fan-panel-title clearfix">
+            <dl class="dl-horizontal">
+                <dt>环路<%= index+1%>:</dt>
+            </dl>
+        </div>
+        <!-- /分机组标题 -->
+        <!-- 风机组 -->
+        <div class="fan-panel-group fan-panel-group-sm clearfix">
+        </div>
+        <!-- /风机组 -->
+    </div>
+    <%})%>
+</div>
+<!-- ***** /FANCON ***** -->
+<!-- ***** 分页 ***** -->
+<!--<ol class="fan-page" id="fanPage">
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+</ol>-->
+<!-- ***** /分页 ***** -->
+<!-- ***** FOOTER ***** -->
+<footer id="footer">版权所有 © 2015-2020 上海电气风电设备有限公司 建议使用IE9+ 浏览器 1280*1024 以上分辨率</footer>
+<!-- ***** /FOOTER ***** -->
+<!-- 右下角弹出窗 -->
+<div class="panel panel-default pop-box">
+    <div class="panel-heading clearfix"><a class="close"><span>&times;</span></a>
+
+        <h3 class="panel-title">提示</h3>
+    </div>
+    <div class="panel-body">
+        <ul>
+            <li>17号风机出现故障，请尽快排查。</li>
+            <li>11号风机出现故障。</li>
+            <li>25号风机出现故障。</li>
+        </ul>
+    </div>
+</div>
+<!-- /右下角弹出窗 -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/javascripts/jquery-1.11.2.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/javascripts/jquery.cookie.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<!-- slider 滑动选值 -->
+<script src="/javascripts/bootstrap-slider.min.js"></script>
+<!-- mCustomScrollbar 滚动条 -->
+<script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+    $(function () {
+        //控制风场内容区高度
+        $("#fanCon, #fanPage").css({"bottom": $("#fanTable").height() + 30});
+        $("#fanTable>.fanTable-arrow").click(function () {
+            $(this).toggleClass("up");
+            $(this).siblings(".fan-tables").toggle();
+            $("#fanCon, #fanPage").css({"bottom": $("#fanTable").height() + 30});
+        });
+        //风场页切换视图
+        $('#ex1').slider({
+            formatter: function (value) {
+                $("#slidervalue").val(value);
+                return value;
+            }
+        });
+        $("#ex1").change(function () {
+            //var myValue = $(this).val();
+            var myValue = $("#slidervalue").val();
+            if (myValue == 0) {
+                $(".fan-panel-group").removeClass("fan-panel-group-md").removeClass("fan-panel-group-lg").addClass("fan-panel-group-sm");
+            } else if (myValue == 1) {
+                $(".fan-panel-group").removeClass("fan-panel-group-sm").removeClass("fan-panel-group-lg").addClass("fan-panel-group-md");
+            } else {
+                $(".fan-panel-group").removeClass("fan-panel-group-sm").removeClass("fan-panel-group-md").removeClass("fan-panel-group-md").addClass("fan-panel-group-lg");
+            }
+        });
+        //风场页-右下角弹出广告；云端-监控页右栏
+        $(".pop-box").slideDown("slow");
+        $(".panel.pop-box .close").click(function () {
+            var iconClose = $(this).text();
+            switch (iconClose) {
+                case "×":
+                    $(this).text("+");
+                    break;
+                case "+":
+                    $(this).text("×");
+                    break;
+            }
+            $(this).next(".panel-title").add($(this).parents(".panel-heading").next("")).toggle(200);
+        });
+    });
+</script>
+<!-- 全局 -->
+<script src="/javascripts/script.js"></script>
+<!–[if IE]>
+<script src="/javascripts/html5.js"></script>
+<![endif]–>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</body>
+</html>
