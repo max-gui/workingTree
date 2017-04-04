@@ -104,10 +104,10 @@ var getcms_circuit_device_key_q = function (wfId, callback) {
 
 var getcms_circuit_key_q = function (wfId, recall) {
     var deffered = Q.defer();
-        
+
     var promise = getcms_circuit_q(wfId);
     promise.then(function (data) {
-        
+
         console.dir(data);
         var dd = data == null ? null : data.data.channels.channel.map(function (curChannel, index, arr) {
 
@@ -144,6 +144,37 @@ router.get('/cms-circuit/:wfId', function (req, res) {
     });
 });
 
+var circuit_device_getAll_q = function (wfId) {
+    var infos_promise = getcms_circuit_q(wfId);
+
+    var status_promise = getStatus_q(wfId);
+
+    return Q.all([infos_promise, status_promise]).then(function (pdata) {
+
+        
+        pdata[0].data.channels.channel = pdata[0].data.channels.channel.map(function (varchannel) {
+            
+            varchannel.endPoints.endPoint = varchannel.endPoints.endPoint.map(function (varendPoint) {
+                varendPoint.realtime_status = pdata[1][varendPoint.key];
+                return varendPoint;
+            });
+            return varchannel;
+        });
+
+        return {
+            wfInfo: pdata[0]
+        };
+    });
+}
+
+router.get('/cms-circuit-withstatus/:wfId', function (req, res) {
+    var promise = circuit_device_getAll_q(req.params.wfId);
+    promise.then(function (result) {
+        
+        res.send(result);
+    });
+});
+
 router.get('/circuits/:wfId', function (req, res) {
     var promise = getcms_circuit_key_q(req.params.wfId);
     promise.then(function (data) {
@@ -154,16 +185,15 @@ router.get('/circuits/:wfId', function (req, res) {
 
 });
 
-router.get('/status/:wfId', function (req, res) {
-    console.log(req.path);
-    var promise = getcms_circuit_key_q(req.params.wfId);
+var getStatus_q = function (wfId) {
+    var promise = getcms_circuit_key_q(wfId);
     var pp = promise.then(function (data) {
 
         return data.data.map(function (item) {
             return getcms_circuit_device_q(item);
         });
     });
-    Q.all(pp).then(function (dataArray) {
+    var res = Q.all(pp).then(function (dataArray) {
 
 
         var result = {};
@@ -173,10 +203,21 @@ router.get('/status/:wfId', function (req, res) {
             for (var key in md) {
                 result[key] = md[key];
             };
-        })
+        });
 
-        res.send(result);
-        //console.dir(result);
+        return result;
+    });
+
+    return res;
+}
+
+router.get('/status/:wfId', function (req, res) {
+    console.log(req.path);
+    var promise = getStatus_q(req.params.wfId);
+
+    promise.then(function (data) {
+        console.dir(data);
+        res.send(data);
     });
 
 });
