@@ -39,7 +39,7 @@ app.use('/users', users);
 app.use('/spectrum', spectrum);
 app.use('/event_history', event_history);
 app.use('/mg_alarm', mg_alarm);
-app.use('/circuit_device', circuit_device);
+app.use('/circuit_device', circuit_device.router);
 
 /*路由*/
 app.use('/cms_channel',cms_channel);
