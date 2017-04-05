@@ -49,23 +49,7 @@ var getcms_circuit_device_q = function (deviceUniKey, callback) {
     return deffered.promise.nodeify(callback);
 }
 
-var getcms_device_info_q = function (devicetag, callback) {
-    var client = redis.createClient(19000, "hao.oudot.cn");
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
-    console.log(devicetag);
-    var deffered = Q.defer();
-    client.hgetall("cms:" + devicetag, function (err, replies) {
-        for (var key in replies) {
-            console.log(key + ': ' + replies[key]);
-        };
-        console.log("last");
-        console.dir(replies);
-        deffered.resolve(replies);
-    });
-    return deffered.promise.nodeify(callback);
-}
+
 
 // var getcms_circuit_device_key = function (wfId, act) {
 //     getcms_circuit(wfId, function (data) {
@@ -144,6 +128,37 @@ router.get('/cms-circuit/:wfId', function (req, res) {
     });
 });
 
+var circuit_device_getAll_q = function (wfId) {
+    var infos_promise = getcms_circuit_q(wfId);
+
+    var status_promise = deviceHelp.getStatus_q(wfId);
+
+    return Q.all([infos_promise, status_promise]).then(function (pdata) {
+
+
+        pdata[0].data.channels.channel = pdata[0].data.channels.channel.map(function (varchannel) {
+
+            varchannel.endPoints.endPoint = varchannel.endPoints.endPoint.map(function (varendPoint) {
+                varendPoint.realtime_status = pdata[1][varendPoint.key];
+                return varendPoint;
+            });
+            return varchannel;
+        });
+
+        return {
+            wfInfo: pdata[0]
+        };
+    });
+}
+
+router.get('/withstatus/:wfId', function (req, res) {
+    var promise = circuit_device_getAll_q(req.params.wfId);
+    promise.then(function (result) {
+
+        res.send(result);
+    });
+});
+
 router.get('/circuits/:wfId', function (req, res) {
     var promise = getcms_circuit_key_q(req.params.wfId);
     promise.then(function (data) {
@@ -154,39 +169,72 @@ router.get('/circuits/:wfId', function (req, res) {
 
 });
 
+var deviceHelp = {
+    getStatus_q: function (wfId) {
+        var promise = getcms_circuit_key_q(wfId);
+        var pp = promise.then(function (data) {
+
+            return data.data.map(function (item) {
+                return getcms_circuit_device_q(item);
+            });
+        });
+        var res = Q.all(pp).then(function (dataArray) {
+
+
+            var result = {};
+            dataArray.map(function (md) {
+
+
+                for (var key in md) {
+                    result[key] = md[key];
+                };
+            });
+
+            return result;
+        });
+
+        return res;
+    },
+    getcms_device_info_q : function (devicetag, callback) {
+        var client = redis.createClient(19000, "hao.oudot.cn");
+        client.on("error", function (err) {
+            console.log("Error " + err);
+        });
+        console.log(devicetag);
+        var deffered = Q.defer();
+        client.hgetall("cms:" + devicetag, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            };
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
+        return deffered.promise.nodeify(callback);
+    }
+
+}
+
 router.get('/status/:wfId', function (req, res) {
     console.log(req.path);
-    var promise = getcms_circuit_key_q(req.params.wfId);
-    var pp = promise.then(function (data) {
+    var promise = deviceHelp.getStatus_q(req.params.wfId);
 
-        return data.data.map(function (item) {
-            return getcms_circuit_device_q(item);
-        });
-    });
-    Q.all(pp).then(function (dataArray) {
-
-
-        var result = {};
-        dataArray.map(function (md) {
-
-
-            for (var key in md) {
-                result[key] = md[key];
-            };
-        })
-
-        res.send(result);
-        //console.dir(result);
+    promise.then(function (data) {
+        console.dir(data);
+        res.send(data);
     });
 
 });
 
 router.get('/info/:tag', function (req, res) {
     console.log(req.path);
-    var promise = getcms_device_info_q(req.params.tag);
+    var promise = deviceHelp.getcms_device_info_q(req.params.tag);
     var pp = promise.then(function (data) {
         res.send(data);
     });
 });
 
-module.exports = router;
+module.exports = {
+    router: router,
+    deviceHelp: deviceHelp
+};

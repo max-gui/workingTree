@@ -40,7 +40,7 @@ app.use('/users', users);
 app.use('/spectrum', spectrum);
 app.use('/event_history', event_history);
 app.use('/mg_alarm', mg_alarm);
-app.use('/circuit_device', circuit_device);
+app.use('/circuit_device', circuit_device.router);
 
 /*路由*/
 app.use('/cms_channel', cms_channel);
@@ -92,21 +92,21 @@ cms_device_status_sub.on("subscribe", function (channel, message) {
 });
 
 cms_device_info_sub.on("message", function (channel, message) {
-	console.log("sub channel " + channel + ": " + message);
-	var promise = getcms_device_info_q(req.params.tag);
-	var pp = promise.then(function (data) {
-		console.log(data);
-		io.emit('cms_device_info', data);
-	});
+  console.log("sub channel " + channel + ": " + message);
+  var promise = circuit_device.deviceHelp.getcms_device_info_q(message);//deviceTag
+  promise.then(function (data) {
+  console.log(data);
+    io.emit('cms_device_info', data);
+  });
 });
 
 cms_device_status_sub.on("message", function (channel, message) {
-	console.log("sub channel " + channel + ": " + message);
-	var promise = getcms_device_info_q(req.params.tag);
-	var pp = promise.then(function (data) {
-		console.log(data);
-		io.emit('cms_device_info', data);
-	});
+    console.log("sub channel " + channel + ": " + message);
+    var promise = circuit_device.deviceHelp.getStatus_q(message);//wfid
+  promise.then(function (data) {
+  console.log(data);
+    io.emit('cms_device_info', data);
+  });
 });
 
 cms_device_info_sub.subscribe("cms_device_info");
