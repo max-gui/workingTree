@@ -1,221 +1,234 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="Author" content="F.Fang">
-    <meta name="Language" scheme="Language Codes" content="zh-CN">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>上海电气智能风电</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/png">
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/skin-black.css" rel="stylesheet" id="skinCss">
-    <!-- mCustomScrollbar 滚动条 -->
-    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet">
-    
-   	<link rel="stylesheet" href="css/unit.css" />
-    
+	<meta charset="utf-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="Author" content="F.Fang">
+	<meta name="Language" scheme="Language Codes" content="zh-CN">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>上海电气智能风电</title>
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/images/favicon.png" type="image/png">
+	<!-- Bootstrap -->
+	<link href="/stylesheets/bootstrap.css" rel="stylesheet">
+	<link href="/stylesheets/skin-black.css" rel="stylesheet" id="skinCss">
+	<!-- mCustomScrollbar 滚动条 -->
+	<link href="/stylesheets/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/stylesheets/unit.css"/>
+
 </head>
 <body>
 <!-- ***** HEADER ***** -->
 <header id="header">
-    <div class="logo pull-left">
-    	<a href="云端-首页.html" title="上海电气智能风电风云">
-    		<img src="images/logo.png" width="120"height="30" alt="上海电气"> 智能风电
-    		<img src="images/logo-fengyun.png" width="40" height="30" alt="风云">
-    	</a>
-        <small>智能监控系统</small>
-    </div>
-    <div class="wind-farm-name pull-left">
-    	<img src="tmp/user-logo.jpg"> 
-    	临港风电场
-    </div>
-    <div class="member-info pull-right">
-    	<span href="#">张三</span> 
+	<div class="logo pull-left">
+		<a href="云端-首页.html" title="上海电气智能风电风云">
+			<img src="/images/logo.png" width="120" height="30" alt="上海电气"> 智能风电
+			<img src="/images/logo-fengyun.png" width="40" height="30" alt="风云">
+		</a>
+		<small>智能监控系统</small>
+	</div>
+	<div class="wind-farm-name pull-left">
+		<img src="/tmp/user-logo.jpg">
+		临港风电场
+	</div>
+	<div class="member-info pull-right">
+		<span href="#">张三</span>
     	<span class="dropdown">
-    		<a href="javascript:;" title="信息"class="dropdown-toggle"type="button"id="dropdownMenu1"data-toggle="dropdown"aria-haspopup="true"aria-expanded="true">
-    			<span  class="glyphicon glyphicon-envelope"></span>
-    			<sup class="red-dot"></sup> 
-    		</a>
+    		<a href="javascript:;" title="信息" class="dropdown-toggle" type="button" id="dropdownMenu1"
+					 data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="glyphicon glyphicon-envelope"></span>
+					<sup class="red-dot"></sup>
+				</a>
 		    <ul class="dropdown-menu dropdown-menu-right">
-		        <li><a href="javascript:;">信息第一条</a></li>
-		        <li><a href="javascript:;">我是第二条信息</a></li>
-		        <li><a href="javascript:;">点我点我！我是No.3</a></li>
-		        <li><a href="javascript:;">我是最后一条</a></li>
-		        <li role="separator" class="divider"></li>
-		        <li><a href="javascript:;">查看全部消息</a></li>
-		    </ul>
-   		 </span> 
-   		 <a href="#" class="glyphicon glyphicon-cog" title="设置"></a>
-   		 <a href="本地风场-登录页.html"class="glyphicon glyphicon-log-out"title="退出"></a>
-    </div>
-    <ul class="skin-btn list-inline pull-right">
-        <li id="skinBlack" class="skin-btn-black active" title="黑"></li>
-        <li id="skinWhite" class="skin-btn-white" title="白"></li>
-        <li id="skinCyan" class="skin-btn-cyan" title="青"></li>
-        <li id="skinBlue" class="skin-btn-blue" title="蓝"></li>
-        <li id="skinGreen" class="skin-btn-green" title="绿"></li>
-        <li id="skinRed" class="skin-btn-red" title="红"></li>
-    </ul>
+					<li><a href="javascript:;">信息第一条</a></li>
+					<li><a href="javascript:;">我是第二条信息</a></li>
+					<li><a href="javascript:;">点我点我！我是No.3</a></li>
+					<li><a href="javascript:;">我是最后一条</a></li>
+					<li role="separator" class="divider"></li>
+					<li><a href="javascript:;">查看全部消息</a></li>
+				</ul>
+   		 </span>
+		<a href="#" class="glyphicon glyphicon-cog" title="设置"></a>
+		<a href="本地风场-登录页.html" class="glyphicon glyphicon-log-out" title="退出"></a>
+	</div>
+	<ul class="skin-btn list-inline pull-right">
+		<li id="skinBlack" class="skin-btn-black active" title="黑"></li>
+		<li id="skinWhite" class="skin-btn-white" title="白"></li>
+		<li id="skinCyan" class="skin-btn-cyan" title="青"></li>
+		<li id="skinBlue" class="skin-btn-blue" title="蓝"></li>
+		<li id="skinGreen" class="skin-btn-green" title="绿"></li>
+		<li id="skinRed" class="skin-btn-red" title="红"></li>
+	</ul>
 </header>
 
 <!-- ***** /HEADER ***** -->
 <!-- ***** ASIDE ***** -->
 <aside id="aside">
-    <div class="aside-arrow"><span class="glyphicon glyphicon-menu-left"></span></div>
-    <ul class="sidebar">
-        <li><a href="javascript:;"><span class="pull-right glyphicon glyphicon-plus-sign glyphicon-minus-sign"></span>环路一</a>
-            <ul>
-                <li><a href="#"><span class="pull-right glyphicon glyphicon-plus glyphicon-minus"></span>风机01</a>
-                    <ul>
-                        <li><a href="#" class="active">轴承01</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+	<div class="aside-arrow"><span class="glyphicon glyphicon-menu-left"></span></div>
+	<ul class="sidebar">
+		<li><a href="javascript:;"><span
+				class="pull-right glyphicon glyphicon-plus-sign glyphicon-minus-sign"></span>环路一</a>
+			<ul>
+				<li><a href="#"><span class="pull-right glyphicon glyphicon-plus glyphicon-minus"></span>风机01</a>
+					<ul>
+						<li><a href="#" class="active">轴承01</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
 </aside>
 <!-- ***** /ASIDE ***** -->
 <!-- ***** NAV ***** -->
 <nav id="nav" class="nav-md">
-    <div class="bread-crumb">
-    	<strong>当前位置：</strong>
-    	<a href="云端-首页.html">云端首页</a> &gt;
-    	<a href="云端-智能监控-风场监控-视图.html">智能监控</a>
-        &gt; <a href="本地风场-监控-风场页-视图.html">监控</a> &gt; 轴承页
-    </div>
-    <ul class="nav-list clearfix">
-        <li><a href="javascript:;"><span class="glyphicon glyphicon-eye-open"></span> 监控 <span
-                class="caret"></span></a>
-            <ul>
-                <li><a href="本地风场-监控-风场页-视图.html"><span class="glyphicon glyphicon-eye-open"></span> 实时监控</a></li>
-                <li><a href="本地风场-能量管理-能量控制.html"><span class="glyphicon glyphicon-tasks"></span> 能量管理</a></li>
-                <li><a href="本地风场-实时对比.html"><span class="glyphicon glyphicon-equalizer"></span> 实时对比</a></li>
-            </ul>
-        </li>
-        <li><a href="本地风场-视频监控-首页.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频监控</a></li>
-        <li><a href="本地风场-故障-故障处理.html"><span class="glyphicon glyphicon-alert"></span> 故障</a></li>
-        <li><a href="本地风场-报表-历史报表.html"><span class="glyphicon glyphicon-th"></span> 报表</a></li>
-        <li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
-        <li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
-        <li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
-        <li><a href="本地风场-CMS-图表.html" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
-        </li>
-        <li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
-    </ul>
+	<div class="bread-crumb">
+		<strong>当前位置：</strong>
+		<a href="云端-首页.html">云端首页</a> &gt;
+		<a href="云端-智能监控-风场监控-视图.html">智能监控</a>
+		&gt; <a href="本地风场-监控-风场页-视图.html">监控</a> &gt; 轴承页
+	</div>
+	<ul class="nav-list clearfix">
+		<li><a href="javascript:;"><span class="glyphicon glyphicon-eye-open"></span> 监控 <span
+				class="caret"></span></a>
+			<ul>
+				<li><a href="本地风场-监控-风场页-视图.html"><span class="glyphicon glyphicon-eye-open"></span> 实时监控</a></li>
+				<li><a href="本地风场-能量管理-能量控制.html"><span class="glyphicon glyphicon-tasks"></span> 能量管理</a></li>
+				<li><a href="本地风场-实时对比.html"><span class="glyphicon glyphicon-equalizer"></span> 实时对比</a></li>
+			</ul>
+		</li>
+		<li><a href="本地风场-视频监控-首页.html"><span class="glyphicon glyphicon-facetime-video"></span> 视频监控</a></li>
+		<li><a href="本地风场-故障-故障处理.html"><span class="glyphicon glyphicon-alert"></span> 故障</a></li>
+		<li><a href="本地风场-报表-历史报表.html"><span class="glyphicon glyphicon-th"></span> 报表</a></li>
+		<li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
+		<li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
+		<li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
+		<li><a href="/cms_channel/F026/" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
+		</li>
+		<li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
+	</ul>
 </nav>
 <!-- ***** /NAV ***** -->
 <!-- ***** ARTICLE ***** -->
 <article id="article" class="article-md clearfix">
-    <!-- MAIN -->
-    <div class="main clearfix">
-        <!-- 信息栏 -->
-        <div class="info-panel clearfix">风电状态：
-        	<span class="text-success">发电</span>&nbsp;&nbsp;
-        	通讯状态：<span class="text-success glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;
-        	预警状态：<span class="text-danger glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;
-        	告警状态：<span class="text-warning glyphicon glyphicon-exclamation-sign"></span>&nbsp;&nbsp;
-        	故障状态：<span class="text-danger glyphicon glyphicon-exclamation-sign"></span>
-            <div class="dropdown pull-right icon-voice">
-            	<a class="dropdown-toggle" href="javascript:;" title="关闭语音"
-                                                           type="button" id="dropdownMenu1" data-toggle="dropdown"
-                                                           aria-haspopup="true" aria-expanded="true"
-                                                           data-hover="dropdown"><span
-                    class="glyphicon glyphicon-volume-up"></span><sup class="red-dot"></sup></a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">关闭语音</a></li>
-                    <li><a href="#">语音确定</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- /信息栏 -->
-        <div class="clearfix" >
-        	<!-- 风机页左侧 -->
-        <div class="pull-left ">
-            <div class="fan-image">
-               <span class="fan-name">F02001</span>
-               <!--<a id="btn-video-01" href="javascript:;"style="position: absolute; right: 7px; top: 7px; font-size: 0.9em;"></a>
-               <a id="btn-video-02" href="javascript:;" style="position: absolute; right: 7px; bottom: 7px; font-size: 0.9em;"></a>
-               --><img src="images/zhou01-img.png" class="unit-img">
-            </div>
-          </div>
-        <!-- /风机页左侧 -->
-        <!-- 风机页右侧 -->
-        <div class="col-fan-right">
-        	<p class="unit-info-title">信息表</p>
-            <!-- 表格 -->
-            <div id="xbxx-table" class="mCustomScrollbar unit-info-table" data-mcs-theme="3d" >
-                <table class="table table-bordered  table-striped table-condensed table-hover">
-                    <%include bearing_msg.html%>
-                    <thead>
-                    <tr>
-                        <th><%= name1 %></th>
-                        <td><%= name2 %></td>
-                        <th><%= name3 %></th>
-                        <td><%= name4 %></td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% names.forEach(function(name){ %>
-                    <tr>
-                        <th><%= name.var1 %></th>
-                        <td><%= name.var2 %></td>
-                        <th><%= name.var3 %></th>
-                        <td><%= name.var4 %></td>
-                    </tr>
-                    <% }) %>
-                    </tbody>
-                </table>
-            </div>
-            <!-- /表格 -->
-        </div>
-        <!-- /风机页右侧 -->
-        </div>
-        
-		
-        <!-- TAB1标签 -->
-        <ul class="nav nav-tabs clearfix" role="tablist" style="margin-top: 20px;">
-            <li role="presentation" class="active"><a href="#tabCon1" id="" role="tab" data-toggle="tab"
-                                                      aria-controls="tabCon1" aria-expanded="true">趋势图</a></li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <!--↓↓↓class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"  style="height: 126px; overflow-y: auto;"↓↓↓-->
-            <div role="tabpanel" id=""
-                 aria-labelledby="tab1" class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"
-                 style="height:250px; overflow-y: auto;">
+	<!-- MAIN -->
+	<div class="main clearfix">
+		<!-- 信息栏 -->
+		<div class="info-panel clearfix">风电状态：
+			<span class="text-success">发电</span>&nbsp;&nbsp;
+			通讯状态：<span class="text-success glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;
+			预警状态：<span class="text-danger glyphicon glyphicon-ok-sign"></span>&nbsp;&nbsp;
+			告警状态：<span class="text-warning glyphicon glyphicon-exclamation-sign"></span>&nbsp;&nbsp;
+			故障状态：<span class="text-danger glyphicon glyphicon-exclamation-sign"></span>
 
-                <div id="main" style="width: 100%;height:100%"></div>
-            </div>
-        <!-- /TAB1标签 -->
+			<div class="dropdown pull-right icon-voice">
+				<a class="dropdown-toggle" href="javascript:;" title="关闭语音"
+					 type="button" id="dropdownMenu1" data-toggle="dropdown"
+					 aria-haspopup="true" aria-expanded="true"
+					 data-hover="dropdown"><span
+						class="glyphicon glyphicon-volume-up"></span><sup class="red-dot"></sup></a>
+				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					<li><a href="#">关闭语音</a></li>
+					<li><a href="#">语音确定</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- /信息栏 -->
+		<div class="clearfix">
+			<!-- 风机页左侧 -->
+			<div class="pull-left ">
+				<div class="fan-image">
+					<span class="fan-name">F02001</span>
+					<!--<a id="btn-video-01" href="javascript:;"style="position: absolute; right: 7px; top: 7px; font-size: 0.9em;"></a>
+					 <a id="btn-video-02" href="javascript:;" style="position: absolute; right: 7px; bottom: 7px; font-size: 0.9em;"></a>
+					 --><img src="/images/zhou01-img.png" class="unit-img">
+				</div>
+			</div>
+			<!-- /风机页左侧 -->
+			<!-- 风机页右侧 -->
+			<div class="col-fan-right">
+				<p class="unit-info-title">信息表</p>
+				<!-- 表格 -->
+				<div id="xbxx-table" class="mCustomScrollbar unit-info-table" data-mcs-theme="3d">
+					<table class="table table-bordered  table-striped table-condensed table-hover">
+						<thead>
+						<tr>
+							<th></th>
+							<td></td>
+							<th></th>
+							<td></td>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<th></th>
+							<td></td>
+							<th></th>
+							<td></td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /表格 -->
+			</div>
+			<!-- /风机页右侧 -->
+		</div>
 
-        <!-- TAB2标签 -->
-        <ul  class="nav nav-tabs clearfix" style="margin-top: 20px;">
-            <li><a href="#" >相关分析:</a></li>
-            <li >
-            	 <button class="btn btn-add">波形图</button>
-            </li>
-            <li ><button class="btn  btn-add">滤波</button></li>
-            <li ><button class="btn  btn-add">概率密度</button></li>
-            <li ><button class="btn  btn-add">包格分析</button></li>
-            <li ><button class="btn  btn-add">时域信号</button></li>
-            <li ><button class="btn  btn-add">频域信号</button></li>
-            <li ><button class="btn  btn-add">倒谱分析</button></li>
-        </ul>
-       <!-- <div id="myTabContent" class="tab-content">-->
-            <!--↓↓↓class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"  style="height: 126px; overflow-y: auto;"↓↓↓-->
-            <div  class="tab-pane fade in active" style="height:450px;">
-                <div id="zhexian" style="width: 100%;height:100%"></div>
-            </div>
-           
-       <!-- </div>-->
-        <!-- /TAB2标签 -->
 
-    </div>
-    <!-- /MAIN -->
+		<!-- TAB1标签 -->
+		<ul class="nav nav-tabs clearfix" role="tablist" style="margin-top: 20px;">
+			<li role="presentation" class="active"><a href="#tabCon1" id="" role="tab" data-toggle="tab"
+																								aria-controls="tabCon1" aria-expanded="true">趋势图</a></li>
+		</ul>
+		<div id="myTabContent" class="tab-content">
+			<!--↓↓↓class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"  style="height: 126px; overflow-y: auto;"↓↓↓-->
+			<div role="tabpanel" id=""
+					 aria-labelledby="tab1" class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"
+					 style="height:250px; overflow-y: auto;">
+
+				<div id="main" style="width: 100%;height:100%"></div>
+			</div>
+			<!-- /TAB1标签 -->
+
+			<!-- TAB2标签 -->
+			<ul class="nav nav-tabs clearfix" style="margin-top: 20px;">
+				<li><a href="#">相关分析:</a></li>
+				<li>
+					<button class="btn btn-add">波形图</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">滤波</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">概率密度</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">包格分析</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">时域信号</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">频域信号</button>
+				</li>
+				<li>
+					<button class="btn  btn-add">倒谱分析</button>
+				</li>
+			</ul>
+			<!-- <div id="myTabContent" class="tab-content">-->
+			<!--↓↓↓class="tab-pane fade in active mCustomScrollbar" data-mcs-theme="3d"  style="height: 126px; overflow-y: auto;"↓↓↓-->
+			<div class="tab-pane fade in active" style="height:450px;">
+				<div id="zhexian" style="width: 100%;height:100%"></div>
+			</div>
+
+			<!-- </div>-->
+			<!-- /TAB2标签 -->
+
+		</div>
+	</div>
+	<!-- /MAIN -->
 </article>
 <!-- ***** /ARTICLE ***** -->
 <!-- ***** FOOTER ***** -->
@@ -247,65 +260,65 @@
         </div>
     </div>
 </div>
---> 
- 	
- <!--/MODAL -->
+-->
+
+<!--/MODAL -->
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.2.min.js"></script>
+<script src="/javascripts/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/jquery.cookie.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.cookie.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
 <script>
-    $(function () {
-        //显示隐藏视频监控
-       /* $("#btn-video-01").click(function () {
-            $("#video-01").toggle();
-            $("#video-02").hide();
-            if ($("#video-01").is(":visible")) {
-                $("#xbxx-table").hide();
-            } else {
-                $("#xbxx-table").show();
-            }
-        });
-        $("#btn-video-02").click(function () {
-            $("#video-02").toggle();
-            $("#video-01").hide();
-            if ($("#video-02").is(":visible")) {
-                $("#xbxx-table").hide();
-            } else {
-                $("#xbxx-table").show();
-            }
-        });*/
-        //“箱变信息”查看更多
+	$(function () {
+		//显示隐藏视频监控
+		/* $("#btn-video-01").click(function () {
+		 $("#video-01").toggle();
+		 $("#video-02").hide();
+		 if ($("#video-01").is(":visible")) {
+		 $("#xbxx-table").hide();
+		 } else {
+		 $("#xbxx-table").show();
+		 }
+		 });
+		 $("#btn-video-02").click(function () {
+		 $("#video-02").toggle();
+		 $("#video-01").hide();
+		 if ($("#video-02").is(":visible")) {
+		 $("#xbxx-table").hide();
+		 } else {
+		 $("#xbxx-table").show();
+		 }
+		 });*/
+		//“箱变信息”查看更多
 //        $("#xbxx-table table tr:gt(5)").hide();
-      /*  $("#xbxx-table .table-btn-more a").click(function () {
-            var plusIcon = $(this).find("span").text();
-            switch (plusIcon) {
-                case "+":
-                    $(this).find("span").text("-");
-                    break;
-                case "-":
-                    $(this).find("span").text("+");
-                    break;
-            }
-            ;
-            $(this).parents("#xbxx-table").find("table>tbody>tr:gt(5)").toggle();
-        });*/
-        //弹出框
-        //$('[data-toggle="popover"]').popover();
-        //风机图
-        //$('[data-toggle="tooltip"]').tooltip();
-    });
+		/*  $("#xbxx-table .table-btn-more a").click(function () {
+		 var plusIcon = $(this).find("span").text();
+		 switch (plusIcon) {
+		 case "+":
+		 $(this).find("span").text("-");
+		 break;
+		 case "-":
+		 $(this).find("span").text("+");
+		 break;
+		 }
+		 ;
+		 $(this).parents("#xbxx-table").find("table>tbody>tr:gt(5)").toggle();
+		 });*/
+		//弹出框
+		//$('[data-toggle="popover"]').popover();
+		//风机图
+		//$('[data-toggle="tooltip"]').tooltip();
+	});
 </script>
 <!-- mCustomScrollbar 滚动条 -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
 <!--图表-->
-<script src="js/echarts.js"></script>
+<script src="/javascripts/echarts.js"></script>
 <!-- 全局 -->
-<script src="js/script.js"></script>
+<script src="/javascripts/script.js"></script>
 <!–[if IE]>
-<script src="js/html5.js"></script>
+<script src="/javascripts/html5.js"></script>
 <![endif]–>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -314,377 +327,377 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <script type="text/javascript">
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-    // 指定图表的配置项和数据
-    function randomData() {
-        now = new Date(+now + oneDay);
-        value = value + Math.random() * 21 - 10;
-        return {
-            name: now.toString(),
-            value: [
-                [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
-                Math.round(value)
-            ]
-        }
-    }
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('main'));
+	// 指定图表的配置项和数据
+	function randomData() {
+		now = new Date(+now + oneDay);
+		value = value + Math.random() * 21 - 10;
+		return {
+			name: now.toString(),
+			value: [
+				[now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'),
+				Math.round(value)
+			]
+		}
+	}
 
-    var data = [];
-    var now = +new Date(1997, 9, 3);
-    var oneDay = 24 * 3600 * 1000;
-    var value = Math.random() * 1000;
-    for (var i = 0; i < 1000; i++) {
-        data.push(randomData());
-    }
+	var data = [];
+	var now = +new Date(1997, 9, 3);
+	var oneDay = 24 * 3600 * 1000;
+	var value = Math.random() * 1000;
+	for (var i = 0; i < 1000; i++) {
+		data.push(randomData());
+	}
 
-    option = {
-        title: {
-            text: ' '
-        },
-        tooltip: {
-            trigger: 'axis',
-            formatter: function (params) {
-                params = params[0];
-                var date = new Date(params.name);
-                return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
-            },
-            axisPointer: {
-                animation: false
-            }
+	option = {
+		title: {
+			text: ' '
+		},
+		tooltip: {
+			trigger: 'axis',
+			formatter: function (params) {
+				params = params[0];
+				var date = new Date(params.name);
+				return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+			},
+			axisPointer: {
+				animation: false
+			}
 
-        },
-        xAxis: {
-            type: 'time',
-            splitLine: {
-                show: false
-            },
-            //设置坐标轴字体颜色和宽度
-            axisLine: {
-                lineStyle: {
-                    color: '#999',
-                    width: 1
-                }
-            },
-        },
-        yAxis: {
-            type: 'value',
-            boundaryGap: [0, '100%'],
-            splitLine: {
-                show: false
-            },
-            //设置坐标轴字体颜色和宽度
-            axisLine: {
-                lineStyle: {
-                    color: '#999',
-                    width: 1
-                }
-            },
-        },
-        series: [{
-            name: '模拟数据',
-            type: 'line',
-            showSymbol: false,
-            hoverAnimation: true,
-            data: data
-        }]
-    };
+		},
+		xAxis: {
+			type: 'time',
+			splitLine: {
+				show: false
+			},
+			//设置坐标轴字体颜色和宽度
+			axisLine: {
+				lineStyle: {
+					color: '#999',
+					width: 1
+				}
+			},
+		},
+		yAxis: {
+			type: 'value',
+			boundaryGap: [0, '100%'],
+			splitLine: {
+				show: false
+			},
+			//设置坐标轴字体颜色和宽度
+			axisLine: {
+				lineStyle: {
+					color: '#999',
+					width: 1
+				}
+			},
+		},
+		series: [{
+			name: '模拟数据',
+			type: 'line',
+			showSymbol: false,
+			hoverAnimation: true,
+			data: data
+		}]
+	};
 
-    setInterval(function () {
+	setInterval(function () {
 
-        for (var i = 0; i < 5; i++) {
-            data.shift();
-            data.push(randomData());
-        }
+		for (var i = 0; i < 5; i++) {
+			data.shift();
+			data.push(randomData());
+		}
 
-        myChart.setOption({
-            series: [{
-                data: data
-            }]
-        });
-    }, 1000);
+		myChart.setOption({
+			series: [{
+				data: data
+			}]
+		});
+	}, 1000);
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+	// 使用刚指定的配置项和数据显示图表。
+	myChart.setOption(option);
 </script>
 <script>
-    var ZheChart = echarts.init(document.getElementById('zhexian'));
+	var ZheChart = echarts.init(document.getElementById('zhexian'));
 
 
-    function splitData(rawData) {
-        var categoryData = [];
-        var values = [];
-        var volumns = [];
-        for (var i = 0; i < rawData.length; i++) {
-            categoryData.push(rawData[i].splice(0, 1)[0]);
-            values.push(rawData[i]);
-            volumns.push(rawData[i][4]);
-        }
-        return {
-            categoryData: categoryData,
-            values: values,
-            volumns: volumns
-        };
-    }
+	function splitData(rawData) {
+		var categoryData = [];
+		var values = [];
+		var volumns = [];
+		for (var i = 0; i < rawData.length; i++) {
+			categoryData.push(rawData[i].splice(0, 1)[0]);
+			values.push(rawData[i]);
+			volumns.push(rawData[i][4]);
+		}
+		return {
+			categoryData: categoryData,
+			values: values,
+			volumns: volumns
+		};
+	}
 
-    function calculateMA(dayCount, data) {
-        var result = [];
-        for (var i = 0, len = data.values.length; i < len; i++) {
-            if (i < dayCount) {
-                result.push('-');
-                continue;
-            }
-            var sum = 0;
-            for (var j = 0; j < dayCount; j++) {
-                sum += data.values[i - j][1];
-            }
-            result.push(+(sum / dayCount).toFixed(3));
-        }
-        return result;
-    }
+	function calculateMA(dayCount, data) {
+		var result = [];
+		for (var i = 0, len = data.values.length; i < len; i++) {
+			if (i < dayCount) {
+				result.push('-');
+				continue;
+			}
+			var sum = 0;
+			for (var j = 0; j < dayCount; j++) {
+				sum += data.values[i - j][1];
+			}
+			result.push(+(sum / dayCount).toFixed(3));
+		}
+		return result;
+	}
 
-    $.getJSON('data/data.json', function (rawData) {
+	$.getJSON('/data/data.json', function (rawData) {
 
-        var data = splitData(rawData);
+		var data = splitData(rawData);
 
-        ZheChart.setOption(option = {
-           /* backgroundColor: '#fff',*/
-            animation: false,
-            legend: {
-                bottom: 10,
-                left: 'center',
-                data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'line',
-                    lineStyle:{
-                    	color:'#999'
-                    }
-                }
-            },
-            toolbox: {
-                feature: {
-                    dataZoom: {
-                        yAxisIndex: false
-                    },
-                    brush: {
-                        type: ['lineX', 'clear']
-                    }
-                }
-            },
-            brush: {
-                xAxisIndex: 'all',
-                brushLink: 'all',
-                outOfBrush: {
-                  /*  colorAlpha: 0.1*/
-                }
-            },
-            grid: [
-                {
-                    left: '10%',
-                    right: '8%',
-                    height: '50%'
-                },
-                {
-                    left: '10%',
-                    right: '8%',
-                    top: '63%',
-                    height: '16%'
-                }
-            ],
-            xAxis: [
-                {
-                    type: 'category',
-                    data: data.categoryData,
-                    scale: true,
-                    boundaryGap : false,
-                    axisLine: {
-                    	onZero: false,
-                    	lineStyle:{
-                    		color:"#999"
-                    	}
-                    },
-                    splitLine: {show: false},
-                    splitNumber: 20,
-                    min: 'dataMin',
-                    max: 'dataMax'
-                },
-                {
-                    type: 'category',
-                    gridIndex: 1,
-                    data: data.categoryData,
-                    scale: true,
-                    boundaryGap : false,
-                    axisLine: {
-                    	onZero: false,
-                    	lineStyle:{
-                    		color:"#999"
-                    	}
-                    },
-                    axisTick: {show: false},
-                    splitLine: {show: false},
-                    axisLabel: {show: false},
-                    splitNumber: 20,
-                    min: 'dataMin',
-                    max: 'dataMax'
-                }
-            ],
-            yAxis: [
-                {
-                    scale: true,
-                    axisLine: {
-		                onZero: false,
-		                    lineStyle:{
-		                    	color:"#999"
-		                    }
-		                    
-		            },
-                    splitArea: {
-                        show: true
-                    }
-                },
-                {
-                    scale: true,
-                    gridIndex: 1,
-                    splitNumber: 2,
-                    axisLabel: {show: false},
-                    axisLine: {
-                    	show: false,
-                    	lineStyle:{
-                    		color:"#999"
-                    	}
-                    },
-                    axisTick: {show: false},
-                    splitLine: {show: false}
-                }
-            ],
-            dataZoom: [
-                {
-                    type: 'inside',
-                    xAxisIndex: [0, 1],
-                    start: 98,
-                    end: 100
-                },
-                {
-                    show: true,
-                    xAxisIndex: [0, 1],
-                    type: 'slider',
-                    top: '85%',
-                    start: 98,
-                    end: 100
-                }
-            ],
-            series: [
-                {
-                    name: 'Dow-Jones index',
-                    type: 'candlestick',
-                    data: data.values,
-                    itemStyle: {
-                        normal: {
-                            borderColor: null,
-                            borderColor0: null
-                        }
-                    },
-                    tooltip: {
-                        formatter: function (param) {
-                            var param = param[0];
-                            return [
-                                'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
-                                'Open: ' + param.data[0] + '<br/>',
-                                'Close: ' + param.data[1] + '<br/>',
-                                'Lowest: ' + param.data[2] + '<br/>',
-                                'Highest: ' + param.data[3] + '<br/>'
-                            ].join('');
-                        }
-                    }
-                },
-                {
-                    name: 'MA5',
-                    type: 'line',
-                    data: calculateMA(5, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA10',
-                    type: 'line',
-                    data: calculateMA(10, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA20',
-                    type: 'line',
-                    data: calculateMA(20, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'MA30',
-                    type: 'line',
-                    data: calculateMA(30, data),
-                    smooth: true,
-                    lineStyle: {
-                        normal: {opacity: 0.5}
-                    }
-                },
-                {
-                    name: 'Volumn',
-                    type: 'bar',
-                    xAxisIndex: 1,
-                    yAxisIndex: 1,
-                    data: data.volumns
-                }
-            ]
-        }, true);
+		ZheChart.setOption(option = {
+			/* backgroundColor: '#fff',*/
+			animation: false,
+			legend: {
+				bottom: 10,
+				left: 'center',
+				data: ['Dow-Jones index', 'MA5', 'MA10', 'MA20', 'MA30']
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'line',
+					lineStyle: {
+						color: '#999'
+					}
+				}
+			},
+			toolbox: {
+				feature: {
+					dataZoom: {
+						yAxisIndex: false
+					},
+					brush: {
+						type: ['lineX', 'clear']
+					}
+				}
+			},
+			brush: {
+				xAxisIndex: 'all',
+				brushLink: 'all',
+				outOfBrush: {
+					/*  colorAlpha: 0.1*/
+				}
+			},
+			grid: [
+				{
+					left: '10%',
+					right: '8%',
+					height: '50%'
+				},
+				{
+					left: '10%',
+					right: '8%',
+					top: '63%',
+					height: '16%'
+				}
+			],
+			xAxis: [
+				{
+					type: 'category',
+					data: data.categoryData,
+					scale: true,
+					boundaryGap: false,
+					axisLine: {
+						onZero: false,
+						lineStyle: {
+							color: "#999"
+						}
+					},
+					splitLine: {show: false},
+					splitNumber: 20,
+					min: 'dataMin',
+					max: 'dataMax'
+				},
+				{
+					type: 'category',
+					gridIndex: 1,
+					data: data.categoryData,
+					scale: true,
+					boundaryGap: false,
+					axisLine: {
+						onZero: false,
+						lineStyle: {
+							color: "#999"
+						}
+					},
+					axisTick: {show: false},
+					splitLine: {show: false},
+					axisLabel: {show: false},
+					splitNumber: 20,
+					min: 'dataMin',
+					max: 'dataMax'
+				}
+			],
+			yAxis: [
+				{
+					scale: true,
+					axisLine: {
+						onZero: false,
+						lineStyle: {
+							color: "#999"
+						}
 
-        // myChart.on('brushSelected', renderBrushed);
+					},
+					splitArea: {
+						show: true
+					}
+				},
+				{
+					scale: true,
+					gridIndex: 1,
+					splitNumber: 2,
+					axisLabel: {show: false},
+					axisLine: {
+						show: false,
+						lineStyle: {
+							color: "#999"
+						}
+					},
+					axisTick: {show: false},
+					splitLine: {show: false}
+				}
+			],
+			dataZoom: [
+				{
+					type: 'inside',
+					xAxisIndex: [0, 1],
+					start: 98,
+					end: 100
+				},
+				{
+					show: true,
+					xAxisIndex: [0, 1],
+					type: 'slider',
+					top: '85%',
+					start: 98,
+					end: 100
+				}
+			],
+			series: [
+				{
+					name: 'Dow-Jones index',
+					type: 'candlestick',
+					data: data.values,
+					itemStyle: {
+						normal: {
+							borderColor: null,
+							borderColor0: null
+						}
+					},
+					tooltip: {
+						formatter: function (param) {
+							var param = param[0];
+							return [
+								'Date: ' + param.name + '<hr size=1 style="margin: 3px 0">',
+								'Open: ' + param.data[0] + '<br/>',
+								'Close: ' + param.data[1] + '<br/>',
+								'Lowest: ' + param.data[2] + '<br/>',
+								'Highest: ' + param.data[3] + '<br/>'
+							].join('');
+						}
+					}
+				},
+				{
+					name: 'MA5',
+					type: 'line',
+					data: calculateMA(5, data),
+					smooth: true,
+					lineStyle: {
+						normal: {opacity: 0.5}
+					}
+				},
+				{
+					name: 'MA10',
+					type: 'line',
+					data: calculateMA(10, data),
+					smooth: true,
+					lineStyle: {
+						normal: {opacity: 0.5}
+					}
+				},
+				{
+					name: 'MA20',
+					type: 'line',
+					data: calculateMA(20, data),
+					smooth: true,
+					lineStyle: {
+						normal: {opacity: 0.5}
+					}
+				},
+				{
+					name: 'MA30',
+					type: 'line',
+					data: calculateMA(30, data),
+					smooth: true,
+					lineStyle: {
+						normal: {opacity: 0.5}
+					}
+				},
+				{
+					name: 'Volumn',
+					type: 'bar',
+					xAxisIndex: 1,
+					yAxisIndex: 1,
+					data: data.volumns
+				}
+			]
+		}, true);
 
-        // function renderBrushed(params) {
-        //     var sum = 0;
-        //     var min = Infinity;
-        //     var max = -Infinity;
-        //     var countBySeries = [];
-        //     var brushComponent = params.brushComponents[0];
+		// myChart.on('brushSelected', renderBrushed);
 
-        //     var rawIndices = brushComponent.series[0].rawIndices;
-        //     for (var i = 0; i < rawIndices.length; i++) {
-        //         var val = data.values[rawIndices[i]][1];
-        //         sum += val;
-        //         min = Math.min(val, min);
-        //         max = Math.max(val, max);
-        //     }
+		// function renderBrushed(params) {
+		//     var sum = 0;
+		//     var min = Infinity;
+		//     var max = -Infinity;
+		//     var countBySeries = [];
+		//     var brushComponent = params.brushComponents[0];
 
-        //     panel.innerHTML = [
-        //         '<h3>STATISTICS:</h3>',
-        //         'SUM of open: ' + (sum / rawIndices.length).toFixed(4) + '<br>',
-        //         'MIN of open: ' + min.toFixed(4) + '<br>',
-        //         'MAX of open: ' + max.toFixed(4) + '<br>'
-        //     ].join(' ');
-        // }
+		//     var rawIndices = brushComponent.series[0].rawIndices;
+		//     for (var i = 0; i < rawIndices.length; i++) {
+		//         var val = data.values[rawIndices[i]][1];
+		//         sum += val;
+		//         min = Math.min(val, min);
+		//         max = Math.max(val, max);
+		//     }
 
-        ZheChart.dispatchAction({
-            type: 'brush',
-            areas: [
-                {
-                    brushType: 'lineX',
-                    coordRange: ['2016-06-02', '2016-06-20'],
-                    xAxisIndex: 0
-                }
-            ]
-        });
-    });
-    window.onresize=function(){
-    	myChart.resize();
-    	ZheChart.resize();
-    }
+		//     panel.innerHTML = [
+		//         '<h3>STATISTICS:</h3>',
+		//         'SUM of open: ' + (sum / rawIndices.length).toFixed(4) + '<br>',
+		//         'MIN of open: ' + min.toFixed(4) + '<br>',
+		//         'MAX of open: ' + max.toFixed(4) + '<br>'
+		//     ].join(' ');
+		// }
+
+		ZheChart.dispatchAction({
+			type: 'brush',
+			areas: [
+				{
+					brushType: 'lineX',
+					coordRange: ['2016-06-02', '2016-06-20'],
+					xAxisIndex: 0
+				}
+			]
+		});
+	});
+	window.onresize = function () {
+		myChart.resize();
+		ZheChart.resize();
+	}
 </script>
 </body>
 </html>

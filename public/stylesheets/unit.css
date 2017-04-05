@@ -1,0 +1,20 @@
+/*部件图*/
+.unit-img{
+	width:520;
+	height:300;
+}
+.unit-info-title{
+	line-height:20px;
+	margin:0px;
+}
+/*右侧信息表*/
+.unit-info-table{
+	height: 280px; 
+	overflow-y: auto;
+	/*border-width:1px;
+	border-style:solid;*/
+}
+/*新增按钮*/
+.btn-add{
+	margin:0px 10px
+}

@@ -4,10 +4,11 @@ var mongoHelp = require('./mongo');
 var Q = require('q');
 
 router.get('/:wfId', function (req, res) {
-    var id = req.params.wfId;
-    mongoHelp.getcms_circuit(id, function (data) {
-        res.render("cms_channel", {data: data})
-    });
+	var id = req.params.wfId;
+	mongoHelp.getcms_circuit(id, function (data) {
+		res.render("cms_channel", {data: data})
+	});
 });
+
 
 module.exports = router;

@@ -4,14 +4,20 @@ var mongoHelp = require('./mongo');
 var Q = require('q');
 
 router.get('/', function (req, res) {
-    mongoHelp.mongoFindAll("mg_alarm", function (result) {
-        console.log("==========>"+JSON.stringify(result))
-        res.render("cms_mg_alarm", {data: result});
-    });
+	mongoHelp.mongoFindAll("mg_alarm", function (result) {
+		console.log("=========>" + JSON.stringify(result.data));
+		res.render("cms_mg_alarm", {alarmData: result});
+	});
 });
-router.post('/', function (req, res) {
-    mongoHelp.mongoAddOne("mg_alarm", req.body, function (result) {
-        res.send(result);
-    });
+
+router.put('/:_id', function (req, res) {
+	var valueInfo = new Object();
+	valueInfo._id = new ObjectId(req.params._id);
+	valueInfo.body = req.body;
+	mongoHelp.mongoPutOne("mg_alarm", valueInfo, function (result) {
+		res.send(result);
+	});
+
 });
+
 module.exports = router;
