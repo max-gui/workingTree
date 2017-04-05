@@ -1,3 +1,5 @@
+/*环路路由文件*/
+
 var express = require('express');
 var router = express.Router();
 var mongoHelp = require('./mongo');
