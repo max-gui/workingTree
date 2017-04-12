@@ -10,6 +10,12 @@ router.get('/', function (req, res) {
 	});
 });
 
+router.post('/:_id', function (req, res) {
+    mongoHelp.mongoAddOne("mg_alarm", req.body, function (result) {
+        res.send(result);
+    });
+});
+
 router.put('/:_id', function (req, res) {
 	var valueInfo = new Object();
 	valueInfo._id = new ObjectId(req.params._id);

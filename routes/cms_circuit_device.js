@@ -8,7 +8,7 @@ var getcms_circuit_q = function (wfId, callback) {
     console.log(wfId);
     var deffered = Q.defer();
     mongoHelp.mongoInit("cms_circuit", function (err, collection) {
-        collection.find({ "wfId": wfId }).toArray(function (err, doc) {
+        collection.find({"wfId": wfId}).toArray(function (err, doc) {
             //assert.equal(err, null);
             var result = new Object();
             if (doc != null) {
@@ -41,14 +41,14 @@ var getcms_circuit_device_q = function (deviceUniKey, callback) {
     client.hgetall("cms:circuit:" + deviceUniKey, function (err, replies) {
         for (var key in replies) {
             console.log(key + ': ' + replies[key]);
-        };
+        }
+        ;
         console.log("last");
         console.dir(replies);
         deffered.resolve(replies);
     });
     return deffered.promise.nodeify(callback);
 }
-
 
 
 // var getcms_circuit_device_key = function (wfId, act) {
@@ -187,7 +187,8 @@ var deviceHelp = {
 
                 for (var key in md) {
                     result[key] = md[key];
-                };
+                }
+                ;
             });
 
             return result;
@@ -195,7 +196,7 @@ var deviceHelp = {
 
         return res;
     },
-    getcms_device_info_q : function (devicetag, callback) {
+    getcms_device_info_q: function (devicetag, callback) {
         var client = redis.createClient(19000, "hao.oudot.cn");
         client.on("error", function (err) {
             console.log("Error " + err);
@@ -205,7 +206,8 @@ var deviceHelp = {
         client.hgetall("cms:" + devicetag, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
-            };
+            }
+            ;
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);

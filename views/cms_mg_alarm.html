@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="keywords" content="">
-	<meta name="description" content="">
+	<meta name="description" content="">s
 	<meta name="Author" content="F.Fang">
 	<meta name="Language" scheme="Language Codes" content="zh-CN">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -94,7 +94,7 @@
 		<li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
 		<li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
 		<li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
-		<li><a href="/cms_channel/F026/" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
+		<li><a href="/cms_channel/withstatus/F026/" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
 		</li>
 		<li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
 	</ul>
@@ -177,7 +177,8 @@
 			</div>
 			<div class="modal-body">
 				<form class="form-horizontal">
-					<div class="form-group">
+                    <input type="hidden" id="append_alarm" value=""/>
+                    <div class="form-group">
 						<label for="" class="col-sm-3 control-label">风机名</label>
 
 						<div class="col-sm-8">
@@ -355,22 +356,24 @@
 	$("#submitModel").click(function () {
 
 		var params = {
-			fan_name: $("#fan_name").val(),
-			station_name: $("#station_name").val(),
-			rms: $("#rms").val(),
-			apex_warning: $("#apex_warning").val(),
-			apex_alarm: $("#apex_alarm").val(),
+            fanName: $("#fan_name").val(),
+            measuringName: $("#station_name").val(),
+            RMScordon: $("#rms").val(),
+            warningLine: $("#apex_warning").val(),
+            policeLine: $("#apex_alarm").val(),
+            guid: $("#append_alarm").val(),
 		}
 
 
 		$.ajax({
-			type: "put",
-			url: 'http://localhost:2000/mg_alarm/58df91df05ce27ab79971b84',
+			type: "post",
+			url: 'http://localhost:2000/cms_mg/58df91df05ce27ab79971b84',
 			data: params,
 			success: function (data, status) {
 				if (status == 'success') {
 					console.log(data);
-				} else {
+                    location.reload();
+                } else {
 					$(".mobile_err_msg").html(status);
 				}
 			},

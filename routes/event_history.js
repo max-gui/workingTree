@@ -7,7 +7,7 @@ var Q = require('q');
 var get_event_q = function (entity_id, callback) {
     var deffered = Q.defer();
     mongoHelp.mongoInit("event_history", function (err, collection) {
-        collection.find({ "entity_id": entity_id }).toArray(function (err, doc) {
+        collection.find({"entity_id": entity_id}).toArray(function (err, doc) {
             var result = new Object();
             //assert.equal(err, null);
             //assert.equal(doc.length, 1);

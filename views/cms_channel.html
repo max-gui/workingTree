@@ -89,7 +89,7 @@
         <li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
         <li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
         <li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
-        <li><a href="/cms_channel/F026" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
+        <li><a href="/cms_channel/withstatus/F026/" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
         </li>
         <li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
     </ul>
@@ -158,8 +158,7 @@
 <!-- ***** FANCON ***** -->
 <div id="fanCon">
     <!--存redis查询条件-->
-    <p id="redisC" style="display: none;"><%=data.data.channels.channel%></p>
-    <%data.data.channels.channel.forEach(function(items,index){%>
+    <%channelData.wfInfo.data.channels.channel.forEach(function(items,index){%>
     <div class="main clearfix">
         <!-- 分机组标题 -->
 
@@ -179,11 +178,33 @@
             <%items.endPoints.endPoint.forEach(function(fitems){%>
             <div class='fan-panel pull-left'>
                 <div class='fan-panel-bd clearfix'>
-                    <div class='pull-left fan-panel-icon fan-panel-icon-default'>
-                        <img src='/images/icons-fan-green.gif' class='img-circle mCS_img_loaded'/>
+                    <% if(fitems.realtime_status == 0){%>
+                    <div id="<%= fitems.realtime_status%>" class='pull-left fan-panel-icon fan-panel-icon-default'>
+                        <img id="<%= fitems.realtime_status%>" src='/images/icons-fan-green.gif' class='img-circle mCS_img_loaded'/>
                     </div>
+                    <%}%>
+                    <% if(fitems.realtime_status == 1){%>
+                    <div id="<%= fitems.realtime_status%>" class='pull-left fan-sample-icon fan-sample-icon-warning'>
+                        <img id="<%= fitems.realtime_status%>" src='/images/icons-fan-green2.gif' class='img-circle mCS_img_loaded'/>
+                    </div>
+                    <%}%>
+                    <% if(fitems.realtime_status == 2){%>
+                    <div id="<%= fitems.realtime_status%>" class='pull-left fan-sample-icon fan-sample-icon-danger'>
+                        <img id="<%= fitems.realtime_status%>" src='/images/icons-fan-red.gif' class='img-circle mCS_img_loaded'/>
+                    </div>
+                    <%}%>
+                    <% if(fitems.realtime_status == 3){%>
+                    <div id="<%= fitems.realtime_status%>" class='pull-left fan-sample-icon fan-sample-icon-warning'>
+                        <img id="<%= fitems.realtime_status%>" src='/images/icons-fan-red.gif' class='img-circle mCS_img_loaded'/>
+                    </div>
+                    <%}%>
+                    <% if(fitems.realtime_status == 4){%>
+                    <div id="<%= fitems.realtime_status%>" class="pull-left fan-sample-icon fan-sample-icon-danger2">
+                        <img id="<%= fitems.realtime_status%>" src="/images/icons-fan-gray.png" class="img-circle mCS_img_loaded">
+                    </div>
+                    <%}%>
                     <div class='fan-panel-bd-tt'>
-                        <a href='/cms_fan/<%=fitems.entity_id%>'><%=fitems.key%>号风机</a>
+                        <a href='/cms_fan/<%=fitems.entity_id%>/info/<%= items.deviceUniKey%>.<%= fitems.key%>'><%=fitems.key%>号风机</a>
                     </div>
                 </div>
             </div>
