@@ -10,8 +10,8 @@ $(function () {
      //sessionStorage.setItem('dataObj',msg)
      });
      */
-    socket.on("cms_sensor_info", function (msg) {
-        console.log(msg);
+    socket.on("cms_status_info", function (msg) {
+        //console.log(msg);
         sessionStorage.setItem('sessionData', JSON.stringify(msg));
     });
     /*每取一次session*/
@@ -20,6 +20,7 @@ $(function () {
     /*循环遍历session的key value*/
     function sessionRefresh() {
         var sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
+        console.log("sessionData====>" + JSON.stringify(sessionData));
         for (var i in sessionData) {
             var fanCode = $(".fan-panel-bd-tt>a").attr("value");
             $(".fan-panel-bd-tt").each(function () {
