@@ -307,7 +307,7 @@
      * ws设置
      */
     var socket = io.connect('http://127.0.0.1:4000');
-    socket.on("cms_device_info", function (msg) {
+    socket.on("cms_sensor_info", function (msg) {
         console.log(msg);
         sessionStorage.setItem('turbineData', JSON.stringify(msg));
     });

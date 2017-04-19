@@ -11,8 +11,8 @@ var cms_interface = require("./cms_circuit_device");
 router.get('/Turbine/:term', function (req, res) {
     cms_interface.turbine_getAll_q(req.params.term).
         then(function (data) {
-            res.send(data)
-            //res.render("cms_channel", {channelData: data});
+            //res.send(data)
+            res.render("cms_channel", {channelData: data});
         });
 });
 

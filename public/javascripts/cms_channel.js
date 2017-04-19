@@ -10,7 +10,7 @@ $(function () {
      //sessionStorage.setItem('dataObj',msg)
      });
      */
-    socket.on("cms_device_info", function (msg) {
+    socket.on("cms_status_info", function (msg) {
         console.log(msg);
         sessionStorage.setItem('sessionData', JSON.stringify(msg));
     });
@@ -26,6 +26,7 @@ $(function () {
                 //判断当前风机
                 if (i == fanCode) {
                     changeStatus(sessionData[i]);
+                    console.log("OKOK")
                 }
             })
         }
