@@ -34,7 +34,7 @@ app.set('view engine', 'html');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -86,7 +86,6 @@ var io = require('socket.io')(server);
 
 // var cms_device_status_sub = redis.createClient(19000, "hao.oudot.cn");
 
-
 // cms_device_info_sub.on("subscribe", function (channel, message) {
 //     console.log("cms_device_info_sub" +channel + message);
 // });
@@ -113,28 +112,30 @@ var io = require('socket.io')(server);
 //     });
 // });
 
-setInterval(function(){
-  
+setInterval(function () {
+    //var tt =io.sockets.clients().connected.keys;
+    if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+    {
+        console.dir(io.sockets.clients().connected.length);
+        var promise = get_teststatus();//deviceTag
+        promise.then(function (data) {
+            console.log(data);
+            io.emit('cms_status_info', data);
+        });
 
-  var promise = get_teststatus();//deviceTag
-    promise.then(function (data) {
-        console.log(data);
-        io.emit('cms_status_info', data);
-    });
+        var promise2 = get_testsinfo();//wfid
+        promise2.then(function (data) {
+            console.log(data);
+            io.emit('cms_sensor_info', data);
+        });
 
-    var promise2 = get_testsinfo();//wfid
-    promise2.then(function (data) {
-        console.log(data);
-        io.emit('cms_sensor_info', data);
-    });
-
-    var promise3 = get_testtinfo();//wfid
-    promise2.then(function (data) {
-        console.log(data);
-        io.emit('cms_turbine_info', data);
-    });
-
-}, 1000);      
+        var promise3 = get_testtinfo();//wfid
+        promise2.then(function (data) {
+            console.log(data);
+            io.emit('cms_turbine_info', data);
+        });
+    }
+}, 1000);
 
 // cms_device_info_sub.subscribe("cms_device_info");
 // cms_device_status_sub.subscribe("cms_device_status");
@@ -154,7 +155,7 @@ var test = function (testtag, callback) {
 };
 
 var get_teststatus = function (req, res) {
-    
+
     var promise = test("cms:turbineStatus:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
@@ -176,18 +177,18 @@ var get_teststatus = function (req, res) {
                     result[key] = md[key];
                 }
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
             };
-                return result;
+            return result;
         });
     });
 };
 
 var get_testtinfo = function (req, res) {
-    
+
     var promise = test("cms:turbineData:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
@@ -207,7 +208,7 @@ var get_testtinfo = function (req, res) {
             ov.map(function (md) {
                 result[md.tag] = md;
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
@@ -218,7 +219,7 @@ var get_testtinfo = function (req, res) {
 }
 
 var get_testsinfo = function (req, res) {
-    
+
     var promise = test("cms:senorData:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
@@ -238,7 +239,7 @@ var get_testsinfo = function (req, res) {
             ov.map(function (md) {
                 result[md.tag] = md;
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
@@ -256,9 +257,9 @@ server.listen(4000, function () {
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', {hello: 'world'});//前端通过socket.on("news")获取
+    socket.emit('news', { hello: 'world' });//前端通过socket.on("news")获取
     socket.on('paper', function (data) {//前端通过socket.emit('paper')发送
-        socket.emit('news', {hello: 'world'});
+        socket.emit('news', { hello: 'world' });
 
         console.log(data);
     });
