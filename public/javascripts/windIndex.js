@@ -4,14 +4,6 @@
 
 
 $(function () {
-
-    /*session测试*/
-    //sessionStorage.setItem('dataObj', '{"key1":"value1"}');
-    //
-    //var data = sessionStorage.getItem("dataObj");
-    //console.log(data);
-    /*/session测试*/
-
     var socket = io.connect('http://127.0.0.1:4000');
 
     /*  socket.on("news", function (msg) {
@@ -23,20 +15,42 @@ $(function () {
         console.log(msg);
         sessionStorage.setItem('sessionData', JSON.stringify(msg));
     });
+    /*每取一次session*/
+    setInterval(sessionRefresh, 1000);
 
-    //setInterval(sessionRefresh,1000);
-
+    /*循环遍历session的key value*/
     function sessionRefresh() {
         var sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
         for (var i in sessionData) {
-            console.log(sessionData[i])
+            var fanCode = $(".fan-panel-bd-tt>a").val();
+            $(".fan-panel-bd-tt").each(function () {
+                //判断当前风机
+                if (i == fanCode) {
+                    $(this).prev();
+                    changeStatus(sessionData[i]);
+                }
+            })
         }
     }
-
-    /* //向服务器发消息
-     socket.emit("redisC", {
-     "content" :$("#redisC").html(),
-     });*/
+    //改变当前风机的状态图片和颜色
+    function changeStatus(value) {
+        if (value == 0) {
+            $(this).prev().children().attr("src", "/images/icons-fan-green.gif");
+            $(this).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-default");
+        } else if (value == 1) {
+            $(this).prev().children().attr("src", "/images/icons-fan-green2.gif");
+            $(this).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+        } else if (value == 2) {
+            $(this).prev().children().attr("src", "/images/icons-fan-red.gif");
+            $(this).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger");
+        } else if (value == 3) {
+            $(this).prev().children().attr("src", "/images/icons-fan-red.gif");
+            $(this).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+        } else {
+            $(this).prev().children().attr("src", "/images/icons-fan-gray.gif");
+            $(this).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger2");
+        }
+    }
 
 
 });
