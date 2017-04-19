@@ -82,38 +82,170 @@ var Q = require('q');
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-var cms_device_info_sub = redis.createClient(19000, "hao.oudot.cn");
+// var cms_device_info_sub = redis.createClient(19000, "hao.oudot.cn");
 
-var cms_device_status_sub = redis.createClient(19000, "hao.oudot.cn");
+// var cms_device_status_sub = redis.createClient(19000, "hao.oudot.cn");
 
-cms_device_info_sub.on("subscribe", function (channel, message) {
-    console.log("cms_device_info_sub" +channel + message);
-});
+// cms_device_info_sub.on("subscribe", function (channel, message) {
+//     console.log("cms_device_info_sub" +channel + message);
+// });
 
-cms_device_status_sub.on("subscribe", function (channel, message) {
-    console.log("cms_device_status_sub"+channel + message);
-});
+// cms_device_status_sub.on("subscribe", function (channel, message) {
+//     console.log("cms_device_status_sub"+channel + message);
+// });
 
-cms_device_info_sub.on("message", function (channel, message) {
-    console.log("sub channel " + channel + ": " + message);
-    var promise = circuit_device.deviceHelp.getcms_device_info_q(message);//deviceTag
+// cms_device_info_sub.on("message", function (channel, message) {
+//     console.log("sub channel " + channel + ": " + message);
+//     var promise = circuit_device.deviceHelp.getcms_device_info_q(message);//deviceTag
+//     promise.then(function (data) {
+//         console.log(data);
+//         io.emit('cms_device_info', data);
+//     });
+// });
+
+// cms_device_status_sub.on("message", function (channel, message) {
+//     console.log("sub channel " + channel + ": " + message);
+//     var promise = circuit_device.deviceHelp.getStatus_q(message);//wfid
+//     promise.then(function (data) {
+//         console.log(data);
+//         io.emit('cms_device_info', data);
+//     });
+// });
+
+setInterval(function(){
+  
+
+  var promise = get_teststatus();//deviceTag
     promise.then(function (data) {
         console.log(data);
-        io.emit('cms_device_info', data);
+        io.emit('cms_status_info', data);
     });
-});
 
-cms_device_status_sub.on("message", function (channel, message) {
-    console.log("sub channel " + channel + ": " + message);
-    var promise = circuit_device.deviceHelp.getStatus_q(message);//wfid
-    promise.then(function (data) {
+    var promise2 = get_testsinfo();//wfid
+    promise2.then(function (data) {
         console.log(data);
-        io.emit('cms_device_info', data);
+        io.emit('cms_sensor_info', data);
     });
-});
 
-cms_device_info_sub.subscribe("cms_device_info");
-cms_device_status_sub.subscribe("cms_device_status");
+    var promise3 = get_testtinfo();//wfid
+    promise2.then(function (data) {
+        console.log(data);
+        io.emit('cms_turbine_info', data);
+    });
+
+}, 1000);      
+
+// cms_device_info_sub.subscribe("cms_device_info");
+// cms_device_status_sub.subscribe("cms_device_status");
+var test = function (testtag, callback) {
+    var client = redis.createClient(19000, "hao.oudot.cn");
+    client.on("error", function (err) {
+        console.log("Error " + err);
+    });
+    var deffered = Q.defer();
+    client.keys(testtag, function (err, replies) {
+
+        console.log("last");
+        console.dir(replies);
+        deffered.resolve(replies);
+    });
+    return deffered.promise.nodeify(callback);
+};
+
+var get_teststatus = function (req, res) {
+    
+    var promise = test("cms:turbineStatus:*");
+    return promise.then(function (data) {
+        var m = data.map(function (d) {
+            return d.split("Status:")[1];
+        })
+        var am = m.map(function (tag) {
+            return circuit_device.deviceHelp.get_turbine_status_all_q(tag).then(function (da) {
+                return da;
+
+            });
+        });
+
+        return Q.all(am).then(function (ov) {
+
+            var result = {};
+            ov.map(function (md) {
+
+                for (var key in md) {
+                    result[key] = md[key];
+                }
+            });
+            var temp ={
+                data: data,
+                m: m,
+                da: result
+            };
+                return result;
+        });
+    });
+};
+
+var get_testtinfo = function (req, res) {
+    
+    var promise = test("cms:turbineData:*");
+    return promise.then(function (data) {
+        var m = data.map(function (d) {
+            return d.split("turbineData:")[1];
+        })
+        var am = m.map(function (tag) {
+            return circuit_device.deviceHelp.get_turbine_data_q(tag).then(function (da) {
+                da.tag = tag
+                return da;
+
+            });
+        });
+
+        return Q.all(am).then(function (ov) {
+
+            var result = {};
+            ov.map(function (md) {
+                result[md.tag] = md;
+            });
+            var temp ={
+                data: data,
+                m: m,
+                da: result
+            };
+            return result;
+        });
+    });
+}
+
+var get_testsinfo = function (req, res) {
+    
+    var promise = test("cms:senorData:*");
+    return promise.then(function (data) {
+        var m = data.map(function (d) {
+            return d.split("senorData:")[1];
+        })
+        var am = m.map(function (tag) {
+            return circuit_device.deviceHelp.get_sensor_data_q(tag).then(function (da) {
+                da.tag = tag
+                return da;
+
+            });
+        });
+
+        return Q.all(am).then(function (ov) {
+
+            var result = {};
+            ov.map(function (md) {
+                result[md.tag] = md;
+            });
+            var temp ={
+                data: data,
+                m: m,
+                da: result
+            };
+            return result;
+        });
+    });
+}
 
 io.on('connection', function () { /* … */
 });
