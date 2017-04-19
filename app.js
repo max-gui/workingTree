@@ -114,7 +114,7 @@ var io = require('socket.io')(server);
 
 setInterval(function () {
     //var tt =io.sockets.clients().connected.keys;
-    if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+    if (true)//Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
     {
         console.dir(io.sockets.clients().connected.length);
         var promise = get_teststatus();//deviceTag
@@ -130,7 +130,7 @@ setInterval(function () {
         });
 
         var promise3 = get_testtinfo();//wfid
-        promise2.then(function (data) {
+        promise3.then(function (data) {
             console.log(data);
             io.emit('cms_turbine_info', data);
         });
@@ -174,7 +174,7 @@ var get_teststatus = function (req, res) {
             ov.map(function (md) {
 
                 for (var key in md) {
-                    result[key] = md[key];
+                    result[key] = Math.floor((Math.random() * 5) + 0);//md[key];
                 }
             });
             var temp = {
@@ -197,6 +197,7 @@ var get_testtinfo = function (req, res) {
         var am = m.map(function (tag) {
             return circuit_device.deviceHelp.get_turbine_data_q(tag).then(function (da) {
                 da.tag = tag
+                da.power_factor = Math.floor((Math.random() * 20) + -10)
                 return da;
 
             });
@@ -228,6 +229,7 @@ var get_testsinfo = function (req, res) {
         var am = m.map(function (tag) {
             return circuit_device.deviceHelp.get_sensor_data_q(tag).then(function (da) {
                 da.tag = tag
+                da.J_BPFI = Math.floor((Math.random() * 101) + 0)
                 return da;
 
             });
