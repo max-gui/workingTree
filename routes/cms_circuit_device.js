@@ -8,7 +8,7 @@ var getcms_circuit_q = function (wfId, callback) {
     console.log(wfId);
     var deffered = Q.defer();
     mongoHelp.mongoInit("cms_circuit", function (err, collection) {
-        collection.find({ "wfId": wfId }).toArray(function (err, doc) {
+        collection.find({"wfId": wfId}).toArray(function (err, doc) {
             //assert.equal(err, null);
             var result = new Object();
             if (doc != null) {
@@ -35,7 +35,7 @@ var get_turbine_mongo_q = function (term, callback) {
     console.log(term);
     var deffered = Q.defer();
     mongoHelp.mongoInit("Turbine", function (err, collection) {
-        collection.find({ "term": term }).toArray(function (err, doc) {
+        collection.find({"term": term}).toArray(function (err, doc) {
             //assert.equal(err, null);
             var result = new Object();
             if (doc != null) {
@@ -260,7 +260,7 @@ var turbine_getAll_q = function (term) {
         });
 }
 
-var turbine_only_status_q = function(term){
+var turbine_only_status_q = function (term) {
     return get_turbine_q(term).
         then(function (data) {
 
@@ -270,7 +270,7 @@ var turbine_only_status_q = function(term){
                     return p.then(function (sData) {
                         var result = {};
                         result[curTurbine.code] = sData
-            
+
                         return result;
                     });
                 });
@@ -433,5 +433,8 @@ router.get('/sensor/info/:tag', function (req, res) {
 
 module.exports = {
     router: router,
-    deviceHelp: deviceHelp
+    deviceHelp: deviceHelp,
+    circuit_device_getAll_q: circuit_device_getAll_q,
+    turbine_only_status_q: turbine_only_status_q,
+    turbine_getAll_q: turbine_getAll_q
 };

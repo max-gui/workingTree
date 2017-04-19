@@ -29,17 +29,15 @@ var get_tend_q = function (sensor_code, callback) {
 };
 
 var get_tend_xy_q = function (sensor_code, callback) {
-    return get_tend_q(sensor_code).then(function(sensor_data)
-    {
-        var rd = sensor_data.data.tend.reduce(function(acc, t)
-        {
+    return get_tend_q(sensor_code).then(function (sensor_data) {
+        var rd = sensor_data.data.tend.reduce(function (acc, t) {
             acc.x.push(t.sample_time);
             acc.y.push(t.RMS);
 
             return acc;
-        },{
-            x:[],
-            y:[]
+        }, {
+            x: [],
+            y: []
         });
 
         return rd;

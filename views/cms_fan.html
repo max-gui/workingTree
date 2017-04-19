@@ -106,7 +106,8 @@
         <li><a href="本地风场-配置-风场配置-MODBUS发布模板.html"><span class="glyphicon glyphicon-th-list"></span> 配置</a></li>
         <li><a href="本地风场-管理-分数据中心-认证.html"><span class="glyphicon glyphicon-cog"></span> 管理</a></li>
         <li><a href="本地风场-健康值.html"><span class="glyphicon glyphicon-dashboard"></span> 健康值</a></li>
-        <li><a href="/cms_channel/withstatus/F026/" class="active"><span class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
+        <li><a href="/cms_channel/withstatus/F026/" class="active"><span
+                class="glyphicon glyphicon-copyright-mark"></span> CMS</a>
         </li>
         <li><a href="本地风场-风场介绍.html"><span class="glyphicon glyphicon-list-alt"></span> 风场介绍</a></li>
     </ul>
@@ -214,21 +215,45 @@
                 <table class="table table-striped table-condensed table-hover">
                     <thead>
                     <tr>
-                        <th>代码</th>
-                        <th>采集码</th>
-                        <th>描述</th>
-                        <th>激活时间</th>
-                        <th>复位时间</th>
+                        <th>风机</th>
+                        <th>严重性</th>
+                        <th>测量</th>
+                        <th>机器</th>
+                        <th>型号</th>
+                        <th>位置</th>
+                        <th>输入的日期</th>
+                        <th>脱离日期</th>
+                        <th>报警类型</th>
+                        <th>模式</th>
+                        <th>转速</th>
+                        <th>下限值</th>
+                        <th>上限值</th>
+                        <th>采样值</th>
+                        <th>当前值</th>
+                        <th>确认人</th>
+                        <th>确认日期</th>
                     </tr>
                     </thead>
                     <tbody>
                     <% for (var i = 0; i < fanData.data.length; i++) { %>
                     <tr>
                         <td><%= fanData.data[i].code %></td>
-                        <td><%= fanData.data[i].collectFaultCode %></td>
-                        <td><%= fanData.data[i].desc %></td>
-                        <td><%= fanData.data[i].startTime %></td>
-                        <td><%= fanData.data[i].resetTime %></td>
+                        <td><%= fanData.data[i].ponderance %></td>
+                        <td><%= fanData.data[i].measure %></td>
+                        <td><%= fanData.data[i].machine %></td>
+                        <td><%= fanData.data[i].machine_Code %></td>
+                        <td><%= fanData.data[i].position %></td>
+                        <td><%= fanData.data[i].importDate %></td>
+                        <td><%= fanData.data[i].separateDate %></td>
+                        <td><%= fanData.data[i].reportType %></td>
+                        <td><%= fanData.data[i].mode %></td>
+                        <td><%= fanData.data[i].rotationRate %></td>
+                        <td><%= fanData.data[i].minValue %></td>
+                        <td><%= fanData.data[i].maxValue %></td>
+                        <td><%= fanData.data[i].sampleValue %></td>
+                        <td><%= fanData.data[i].currentValue %></td>
+                        <td><%= fanData.data[i].confirmPerson %></td>
+                        <td><%= fanData.data[i].confirmDate %></td>
                     </tr>
                     <% } %>
                     </tbody>
@@ -251,48 +276,6 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/javascripts/jquery.cookie.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
-<script>
-    $(function () {
-        //显示隐藏视频监控
-        /*  $("#btn-video-01").click(function(){
-         $("#video-01").toggle();
-         $("#video-02").hide();
-         if($("#video-01").is(":visible")){
-         $("#xbxx-table").hide();
-         }else{
-         $("#xbxx-table").show();
-         }
-         });*/
-        /* $("#btn-video-02").click(function(){
-         $("#video-02").toggle();
-         $("#video-01").hide();
-         if($("#video-02").is(":visible")){
-         $("#xbxx-table").hide();
-         }else{
-         $("#xbxx-table").show();
-         }
-         });*/
-        //“箱变信息”查看更多
-        /*$("#xbxx-table table tr:gt(5)").hide();
-         $("#xbxx-table .table-btn-more a").click(function(){
-         var plusIcon = $(this).find("span").text();
-         switch (plusIcon)
-         {
-         case "+":
-         $(this).find("span").text("-");
-         break;
-         case "-":
-         $(this).find("span").text("+");
-         break;
-         };
-         $(this).parents("#xbxx-table").find("table>tbody>tr:gt(5)").toggle();
-         });*/
-        //弹出框
-//        $('[data-toggle="popover"]').popover();
-        //风机图
-//        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>
 <!-- mCustomScrollbar 滚动条 -->
 <script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- 全局 -->
@@ -317,8 +300,35 @@
      function getData(key, value) {
      sessionStorage.getItem(key, value);
      }*/
-    sessionStorage.setItem("发电机转速", "2333");
-    console.log(sessionStorage.getItem("发电机转速"));
+    /*sessionStorage.setItem("发电机转速", "2333");
+     console.log(sessionStorage.getItem("发电机转速"));*/
+
+    /**
+     * ws设置
+     */
+    var socket = io.connect('http://127.0.0.1:4000');
+    socket.on("cms_device_info", function (msg) {
+        console.log(msg);
+        sessionStorage.setItem('turbineData', JSON.stringify(msg));
+    });
+
+    var MyTimer = "";
+    MyTimer = setInterval(function () {
+
+        if (sessionStorage.length > 0) {
+            var str = sessionStorage.getItem("turbineData");
+            var Turbine = JSON.parse(str);
+//		console.log(str);
+
+            var _table_content;
+            for (var i in Turbine) {
+//				console.log("keys：" + i + "values：" + Sensor[i]);
+                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
+            }
+            $(".col-fan-right>#xbxx-table>table>tbody").html(_table_content);
+        }
+
+    }, 1000);
 </script>
 </body>
 </html>
