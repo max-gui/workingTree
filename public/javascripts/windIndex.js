@@ -26,7 +26,6 @@ $(function () {
             $(".fan-panel-bd-tt").each(function () {
                 //判断当前风机
                 if (i == fanCode) {
-                    $(this).prev();
                     changeStatus(sessionData[i]);
                 }
             })
