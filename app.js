@@ -130,12 +130,12 @@ setInterval(function () {
         });
 
         var promise3 = get_testtinfo();//wfid
-        promise2.then(function (data) {
+        promise3.then(function (data) {
             console.log(data);
             io.emit('cms_turbine_info', data);
         });
     }
-}, 1000);
+}, 5000);
 
 // cms_device_info_sub.subscribe("cms_device_info");
 // cms_device_status_sub.subscribe("cms_device_status");

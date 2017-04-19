@@ -1,6 +1,15 @@
 .table > thead > tr > th{
     		border-bottom:0px;
  }
+.table > thead > tr > th{
+    text-align: center;
+}
+.table > tbody > tr > td{
+    text-align: center;
+}
+.table > tbody > tr > th{
+    text-align: center;
+}
 .icon-border{
 	border:0px;
 }

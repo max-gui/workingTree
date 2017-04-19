@@ -10,7 +10,7 @@ $(function () {
      //sessionStorage.setItem('dataObj',msg)
      });
      */
-    socket.on("cms_status_info", function (msg) {
+    socket.on("cms_sensor_info", function (msg) {
         console.log(msg);
         sessionStorage.setItem('sessionData', JSON.stringify(msg));
     });
@@ -21,12 +21,11 @@ $(function () {
     function sessionRefresh() {
         var sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
         for (var i in sessionData) {
-            var fanCode = $(".fan-panel-bd-tt>a").val();
+            var fanCode = $(".fan-panel-bd-tt>a").attr("value");
             $(".fan-panel-bd-tt").each(function () {
                 //判断当前风机
                 if (i == fanCode) {
                     changeStatus(sessionData[i]);
-                    console.log("OKOK")
                 }
             })
         }
