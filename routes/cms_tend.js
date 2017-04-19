@@ -38,10 +38,9 @@ var get_tend_xy_q = function (sensor_code, callback) {
 
             return acc;
         }, {
-                x: [],
-                y: []
-            });
-
+            x: [],
+            y: []
+        });
         return rd;
     });
 };
