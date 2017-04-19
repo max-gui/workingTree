@@ -6,7 +6,6 @@ var redis = require("redis");
 var cms_interface = require("./cms_circuit_device");
 
 
-
 router.get('/circuit_device/info/:id', function (req, res) {
     console.log(req.path);
     var promise = cms_interface.deviceHelp.get_turbine_data_q(req.params.id);

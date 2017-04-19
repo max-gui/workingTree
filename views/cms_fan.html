@@ -173,11 +173,11 @@
                         <tr>
                             <th>名称</th>
                             <th>数值</th>
-                            <th>名称</th>
-                            <th>数值</th>
+                            <!--<th>名称</th>-->
+                            <!--<th>数值</th>-->
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="turbineStatus">
                         <tr>
                             <th>传感器</th>
                             <th><%= infoData.sensor_code%></th>
@@ -292,23 +292,12 @@
 <!--by chen hai quan  -20170324-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script>
-    /* var socket = io.connect();
-     socket.on('cms_device_info', function (msg) {
-     sessionStorage.setItem(msg);
-     });
-     var timer = setInterval(getData(), 1000);
-     function getData(key, value) {
-     sessionStorage.getItem(key, value);
-     }*/
-    /*sessionStorage.setItem("发电机转速", "2333");
-     console.log(sessionStorage.getItem("发电机转速"));*/
-
     /**
      * ws设置
      */
     var socket = io.connect('http://127.0.0.1:4000');
     socket.on("cms_turbine_info", function (msg) {
-        console.log(msg);
+//        console.log(msg);
         sessionStorage.setItem('turbineData', JSON.stringify(msg));
     });
 
@@ -318,14 +307,21 @@
         if (sessionStorage.length > 0) {
             var str = sessionStorage.getItem("turbineData");
             var Turbine = JSON.parse(str);
-//		console.log(str);
+//            console.log(str);
 
             var _table_content;
             for (var i in Turbine) {
-//				console.log("keys：" + i + "values：" + Sensor[i]);
-                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
+//                console.log("keys：" + i + "values：" + Turbine[i]);
+                if (i == "F0020001001") {
+                    for (var key in Turbine["F0020001001"]) {
+//                        console.log(Turbine["F0020001001"][key])
+                        _table_content += "<tr><th>" + key + "</th><th>" + Turbine["F0020001001"][key] + "</th></tr>";
+
+                    }
+                }
+//                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
             }
-            $(".col-fan-right>#xbxx-table>table>tbody").html(_table_content);
+            $("#turbineStatus").html(_table_content);
         }
 
     }, 1000);
