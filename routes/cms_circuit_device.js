@@ -339,6 +339,50 @@ var deviceHelp = {
 
         return res;
     },
+    get_turbine_statusWithInfo_q: function (term) {
+        return get_turbine_q(term).
+            then(function (data) {
+
+                var ttmm = data.data.map(function (item) {
+                    var mm = item.turbine.map(function (curTurbine) {
+                        var p = get_turbine_status_q(curTurbine.statusKey, curTurbine.code);
+                        return p.then(function (sData) {
+                            var result = {};
+                            result[curTurbine.code] = sData
+
+                            return result;
+                        });
+                    });
+
+                    return Q.all(mm).then(function (here) {
+                        return here;
+                    });
+                });
+
+                return Q.all(ttmm).then(function (jm) {
+                    // [].concat.apply([], dd);
+                    return [].concat.apply([], jm);
+                })
+            });
+    },
+    get_turbine_status_all_q: function (termIpno, callback) {
+        var client = redis.createClient(19000, "hao.oudot.cn");
+        client.on("error", function (err) {
+            console.log("Error " + err);
+        });
+        console.log(termIpno);
+        var deffered = Q.defer();
+        client.hgetall("cms:turbineStatus:" + termIpno, function (err, replies) {
+            // for (var key in replies) {
+            //     console.log(key + ': ' + replies[key]);
+            // }
+            // ;
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
+        return deffered.promise.nodeify(callback);
+    },
     get_turbine_data_q: function (id, callback) {
         var client = redis.createClient(19000, "hao.oudot.cn");
         client.on("error", function (err) {
