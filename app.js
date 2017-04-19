@@ -46,7 +46,7 @@ app.use('/mg_alarm', mg_alarm);
 app.use('/circuit_device', circuit_device.router);
 app.use('/tend', sensor_tend);
 app.use('/time_base', time_base);
-app.use('/spectrum_data',spectrum_data);
+app.use('/spectrum_data', spectrum_data);
 
 /*路由*/
 
@@ -85,6 +85,7 @@ var io = require('socket.io')(server);
 // var cms_device_info_sub = redis.createClient(19000, "hao.oudot.cn");
 
 // var cms_device_status_sub = redis.createClient(19000, "hao.oudot.cn");
+
 
 // cms_device_info_sub.on("subscribe", function (channel, message) {
 //     console.log("cms_device_info_sub" +channel + message);

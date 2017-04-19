@@ -2,7 +2,6 @@
  * ws设置
  */
 
-
 $(function () {
     var socket = io.connect('http://127.0.0.1:4000');
 
@@ -31,6 +30,7 @@ $(function () {
             })
         }
     }
+
     //改变当前风机的状态图片和颜色
     function changeStatus(value) {
         if (value == 0) {
