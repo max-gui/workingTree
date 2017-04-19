@@ -158,32 +158,38 @@
                         <tr>
                             <th>名称</th>
                             <th>数值</th>
-                            <th>名称</th>
-                            <th>数值</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="sensorStatus">
                         <tr>
                             <td>rotationRate</td>
                             <td><%= sensorInfo.sensor_rotationRate%></td>
+                        </tr>
+                        <tr>
                             <td>J_BPFI</td>
                             <td><%= sensorInfo.J_BPFI%></td>
                         </tr>
                         <tr>
                             <td>J_BPFO</td>
                             <td><%= sensorInfo.J_BPFO%></td>
+                        </tr>
+                        <tr>
                             <td>J_BSF</td>
                             <td><%= sensorInfo.J_BSF%></td>
                         </tr>
                         <tr>
                             <td>J_FTF</td>
                             <td><%= sensorInfo.J_FTF%></td>
+                        </tr>
+                        <tr>
                             <td>BPFI</td>
                             <td><%= sensorInfo.BPFI%></td>
                         </tr>
                         <tr>
                             <td>BPFO</td>
                             <td><%= sensorInfo.BSF%></td>
+                        </tr>
+                        <tr>
                             <td>FTF</td>
                             <td><%= sensorInfo.FTF%></td>
                         </tr>
@@ -350,7 +356,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script  src="/javascripts/mycharts.js"></script>
+<script src="/javascripts/mycharts.js"></script>
 <!--<script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
@@ -705,28 +711,35 @@
      * ws设置
      */
     var socket = io.connect('http://127.0.0.1:4000');
-    socket.on("cms_device_status_sub", function (msg) {
+    socket.on("cms_sensor_info", function (msg) {
         console.log(msg);
         sessionStorage.setItem('sensorData', JSON.stringify(msg));
     });
+
 
     var MyTimer = "";
     MyTimer = setInterval(function () {
 
         if (sessionStorage.length > 0) {
             var str = sessionStorage.getItem("sensorData");
-            var Sensor = JSON.parse(str);
-//		console.log(str);
-
+            var Turbine = JSON.parse(str);
+//            console.log(str);
             var _table_content;
-            for (var i in Sensor) {
-//				console.log("keys：" + i + "values：" + Sensor[i]);
-                _table_content += "<tr><th>" + i + "</th><th>" + Sensor[i] + "</th><th>" + i + "</th><th>" + Sensor[i] + "</th></tr>";
+            for (var i in Turbine) {
+//                console.log("keys：" + i + "values：" + Turbine[i]);
+                if (i == "F0020001001_1001") {
+                    for (var key in Turbine["F0020001001_1001"]) {
+//                        console.log(Turbine["F0020001001"][key])
+                        _table_content += "<tr><th>" + key + "</th><th>" + Turbine["F0020001001_1001"][key] + "</th></tr>";
+                    }
+                }
+//                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
             }
-            $(".col-fan-right>#xbxx-table>table>tbody").html(_table_content);
+            $("#sensorStatus").html(_table_content);
         }
 
     }, 1000);
+
 </script>
 </body>
 </html>

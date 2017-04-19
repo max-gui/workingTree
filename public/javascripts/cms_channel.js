@@ -30,31 +30,54 @@ $(function () {
          }
          })
          }*/
-        var fanCode = $(".fan-panel-bd-tt>a").attr("value");
-        $(".fan-panel-bd-tt").each(function () {
-            changeStatus(sessionData[fanCode]);
+        /*var fanCode = $(".fan-panel-bd-tt>a").attr("value");
+         $(".fan-panel-bd-tt").each(function (index) {
+         //changeStatus(sessionData[fanCode]);
+         //console.log($(".fan-panel-bd-tt")[index])
+         })*/
+        $(".fan-panel-bd-tt").each(function (index, dv) {
+            changeStatus(dv, sessionData[dv.attributes.value.value]);
         })
+
     }
 
     //改变当前风机的状态图片和颜色
-    function changeStatus(value) {
+    /* function changeStatus(value) {
+     if (value == 0) {
+     $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-green.gif");
+     $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-default");
+     } else if (value == 1) {
+     $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-green2.gif");
+     $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+     } else if (value == 2) {
+     $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-red.gif");
+     $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger");
+     } else if (value == 3) {
+     $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-red.gif");
+     $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+     } else {
+     $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-gray.png");
+     $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger2");
+     }
+     }*/
+    //改变当前风机的状态图片和颜色
+    function changeStatus(dv, value) {
         if (value == 0) {
-            $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-green.gif");
-            $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-default");
+            $(dv).prev().children().attr("src", "/images/icons-fan-green.gif");
+            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-default");
         } else if (value == 1) {
-            $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-green2.gif");
-            $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+            $(dv).prev().children().attr("src", "/images/icons-fan-green2.gif");
+            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
         } else if (value == 2) {
-            $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-red.gif");
-            $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger");
+            $(dv).prev().children().attr("src", "/images/icons-fan-red.gif");
+            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger");
         } else if (value == 3) {
-            $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-red.gif");
-            $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+            $(dv).prev().children().attr("src", "/images/icons-fan-red.gif");
+            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
         } else {
-            $(".fan-panel-bd-tt").prev().children().attr("src", "/images/icons-fan-gray.png");
-            $(".fan-panel-bd-tt").prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger2");
+            $(dv).prev().children().attr("src", "/images/icons-fan-gray.png");
+            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger2");
         }
     }
-
 
 });

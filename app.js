@@ -34,7 +34,7 @@ app.set('view engine', 'html');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -259,9 +259,9 @@ server.listen(4000, function () {
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.emit('news', { hello: 'world' });//前端通过socket.on("news")获取
+    socket.emit('news', {hello: 'world'});//前端通过socket.on("news")获取
     socket.on('paper', function (data) {//前端通过socket.emit('paper')发送
-        socket.emit('news', { hello: 'world' });
+        socket.emit('news', {hello: 'world'});
 
         console.log(data);
     });
