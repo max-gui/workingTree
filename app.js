@@ -12,6 +12,9 @@ var spectrum = require('./routes/cms_spectrum');
 var event_history = require('./routes/event_history');
 var mg_alarm = require('./routes/mg_alarm');
 var circuit_device = require('./routes/cms_circuit_device');
+var sensor_tend = require('./routes/cms_tend');
+var time_base = require('./routes/cms_timebase');
+var spectrum_data = require('./routes/cms_spectrum_data')
 
 /*路由*/
 var cms_channel = require('./routes/cms_channel');
@@ -41,6 +44,9 @@ app.use('/spectrum', spectrum);
 app.use('/event_history', event_history);
 app.use('/mg_alarm', mg_alarm);
 app.use('/circuit_device', circuit_device.router);
+app.use('/tend', sensor_tend);
+app.use('/time_base', time_base);
+app.use('/spectrum_data',spectrum_data);
 
 /*路由*/
 
