@@ -311,7 +311,6 @@
 
     var MyTimer = "";
     MyTimer = setInterval(function () {
-
         if (sessionStorage.length > 0) {
             var str = sessionStorage.getItem("turbineData");
             var Turbine = JSON.parse(str);
@@ -324,7 +323,6 @@
                     for (var key in Turbine["F0020001001"]) {
 //                        console.log(Turbine["F0020001001"][key])
                         _table_content += "<tr><th>" + key + "</th><th>" + Turbine["F0020001001"][key] + "</th></tr>";
-
                     }
                 }
 //                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
