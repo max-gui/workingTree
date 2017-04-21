@@ -19,26 +19,28 @@ $(function () {
 
     /*循环遍历session的key value*/
     function sessionRefresh() {
-        var sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
-        console.log("sessionData====>" + JSON.stringify(sessionData));
-        /*for (var i in sessionData) {
-         var fanCode = $(".fan-panel-bd-tt>a").attr("value");
-         $(".fan-panel-bd-tt").each(function () {
-         //判断当前风机
-         if (i == fanCode) {
-         changeStatus(sessionData[i]);
-         }
-         })
-         }*/
-        /*var fanCode = $(".fan-panel-bd-tt>a").attr("value");
-         $(".fan-panel-bd-tt").each(function (index) {
-         //changeStatus(sessionData[fanCode]);
-         //console.log($(".fan-panel-bd-tt")[index])
-         })*/
-        $(".fan-panel-bd-tt").each(function (index, dv) {
-            changeStatus(dv, sessionData[dv.attributes.value.value]);
-        })
-
+        var data = sessionStorage.getItem('sessionData');
+        if (data != null) {
+            var sessionData = JSON.parse(sessionStorage.getItem('sessionData'));
+            console.log("sessionData====>" + JSON.stringify(sessionData));
+            /*for (var i in sessionData) {
+             var fanCode = $(".fan-panel-bd-tt>a").attr("value");
+             $(".fan-panel-bd-tt").each(function () {
+             //判断当前风机
+             if (i == fanCode) {
+             changeStatus(sessionData[i]);
+             }
+             })
+             }*/
+            /*var fanCode = $(".fan-panel-bd-tt>a").attr("value");
+             $(".fan-panel-bd-tt").each(function (index) {
+             //changeStatus(sessionData[fanCode]);
+             //console.log($(".fan-panel-bd-tt")[index])
+             })*/
+            $(".fan-panel-bd-tt").each(function (index, dv) {
+                changeStatus(dv, sessionData[dv.attributes.value.value]);
+            })
+        }
     }
 
     //改变当前风机的状态图片和颜色

@@ -114,8 +114,12 @@ var io = require('socket.io')(server);
 
 setInterval(function () {
     //var tt =io.sockets.clients().connected.keys;
+<<<<<<< HEAD
     if (Object.keys(io.sockets.clients().connected).length != 0)
     //Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+=======
+    if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+>>>>>>> cd8936ea4e3ac4f71b82279c0a1d29cad1ed88c0
     {
         console.dir(io.sockets.clients().connected.length);
         var promise = get_teststatus();//deviceTag
