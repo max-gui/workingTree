@@ -393,8 +393,7 @@ var deviceHelp = {
         client.hgetall("cms:turbineData:" + id, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
-            }
-            ;
+            };
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);
@@ -411,8 +410,7 @@ var deviceHelp = {
         client.hgetall("cms:senorData:" + tag, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
-            }
-            ;
+            };
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);

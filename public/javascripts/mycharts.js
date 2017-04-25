@@ -12,7 +12,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '时域图',
         },
         toolbox: {
             feature: {
@@ -71,7 +71,7 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                //name: 'RMS',
                 symbol: 'none',
                 data: data.y
             }]
@@ -90,7 +90,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '时域图',
         },
         toolbox: {
             feature: {
@@ -149,7 +149,7 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                name: '',
                 symbol: 'none',
                 data: data.y
             }]
@@ -171,7 +171,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '频域图',
         },
         toolbox: {
             feature: {
@@ -230,7 +230,7 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                //name: 'RMS',
                 symbol: 'none',
                 data: data.y
             }]
