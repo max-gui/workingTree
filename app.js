@@ -124,11 +124,11 @@ setInterval(function () {
             io.emit('cms_status_info', data);
         });
 
-       /* var promise2 = get_testsinfo();//wfid
+        var promise2 = get_testsinfo();//wfid
         promise2.then(function (data) {
             console.log(data);
             io.emit('cms_sensor_info', data);
-        });*/
+        });
 
         var promise3 = get_testtinfo();//wfid
         promise3.then(function (data) {
