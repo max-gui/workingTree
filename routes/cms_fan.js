@@ -26,7 +26,7 @@ router.get('/circuit_device/info/:id', function (req, res) {
                     result.message = "nothing was found";
                 }
 
-                //res.send(result);
+                //res.send(data);
                 res.render('cms_fan', {fanData: result, infoData: data});
             })
         });

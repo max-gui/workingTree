@@ -172,7 +172,8 @@
                         <thead>
                         <tr>
                             <th>名称</th>
-                            <th>数值</th>
+                            <th>方向</th>
+                            <th>实时值</th>
                             <!--<th>名称</th>-->
                             <!--<th>数值</th>-->
                         </tr>
@@ -180,34 +181,42 @@
                         <tbody id="turbineStatus">
                         <tr>
                             <th>传感器</th>
+                            <th>-</th>
                             <th><%= infoData.sensor_code%></th>
                         </tr>
                         <tr>
                             <th>发电机转速</th>
+                            <th>-</th>
                             <th><%= infoData.gen_rotationRate%></th>
                         </tr>
                         <tr>
                             <th>风轮转速</th>
+                            <th>-</th>
                             <th><%= infoData.windWheel_rotationRate%></th>
                         </tr>
                         <tr>
                             <th>有功功率</th>
+                            <th>-</th>
                             <th><%= infoData.active_power%></th>
                         </tr>
                         <tr>
                             <th>无功功率</th>
+                            <th>-</th>
                             <th><%= infoData.reactive_power%></th>
                         </tr>
                         <tr>
                             <th>功率因数</th>
+                            <th>-</th>
                             <th><%= infoData.power_factor%></th>
                         </tr>
                         <tr>
                             <th>液压系统压力</th>
+                            <th>-</th>
                             <th><%= infoData.oilSystem_pressure%></th>
                         </tr>
                         <tr>
                             <th>齿轮箱油温</th>
+                            <th>-</th>
                             <th><%= infoData.gearCase_oilTemp%></th>
                         </tr>
                         </tbody>
@@ -322,7 +331,7 @@
                 if (i == "F0020001001") {
                     for (var key in Turbine["F0020001001"]) {
 //                        console.log(Turbine["F0020001001"][key])
-                        _table_content += "<tr><th>" + key + "</th><th>" + Turbine["F0020001001"][key] + "</th></tr>";
+                        _table_content += "<tr><th>" + key + "</th><th>-</th><th>" + Turbine["F0020001001"][key] + "</th></tr>";
                     }
                 }
 //                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";
