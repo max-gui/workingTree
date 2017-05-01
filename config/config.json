@@ -1,0 +1,22 @@
+{
+  "mongodb":{
+    "USERNAME":"",
+    "PASSWORD":"",
+    "IP":"oudot.vicp.io",
+    "PORT":12307,
+    "DBNAME":"fengdian_cms"
+  },
+  "redis":{
+    "REQUIREPASS":"dHdQ2QsIDeR",
+    "IP":"hao.oudot.cn",
+    "PORT":19000
+  },
+  "socket": {
+    "IP": "127.0.0.1",
+    "PORT": 4000
+  },
+  "systemVersion": {
+    "versionNo": "v1.00"
+  },
+  "windFieldName": "测试风场"
+}

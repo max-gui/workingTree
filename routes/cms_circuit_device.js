@@ -383,6 +383,7 @@ var deviceHelp = {
     },
     get_turbine_data_q: function (id, callback) {
         var deffered = Q.defer();
+<<<<<<< HEAD
         redis.init(function (client) {
             console.log(id);
             client.hgetall("cms:turbineData:" + id, function (err, replies) {
@@ -394,11 +395,21 @@ var deviceHelp = {
                 console.dir(replies);
                 deffered.resolve(replies);
             });
+=======
+        client.hgetall("cms:turbineData:" + id, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            };
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+>>>>>>> 3666296f4f2ce4af2edb83a1bac8bf669c760c39
         });
         return deffered.promise.nodeify(callback);
     },
     get_sensor_data_q: function (tag, callback) {
         var deffered = Q.defer();
+<<<<<<< HEAD
         redis.init(function (client) {
             console.log(tag);
 
@@ -412,6 +423,16 @@ var deviceHelp = {
                 deffered.resolve(replies);
             });
         })
+=======
+        client.hgetall("cms:senorData:" + tag, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            };
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
+>>>>>>> 3666296f4f2ce4af2edb83a1bac8bf669c760c39
         return deffered.promise.nodeify(callback);
     },
     getcms_device_info_q: function (devicetag, callback) {

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    var urlTag = $("#urlTag").val();
+
     /* $.get("/tend/F0020001001_1001", function (data, status) {
      alert("数据：" + JSON.stringify(data.x));
      });
@@ -12,7 +14,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '时域图',
         },
         toolbox: {
             feature: {
@@ -63,7 +65,7 @@ $(document).ready(function () {
     });
 
 // 异步加载数据
-    $.get('/tend/F0020001001_1001').done(function (data) {
+    $.get('/tend/' + urlTag).done(function (data) {
         // 填入数据
         myChart.setOption({
             xAxis: {
@@ -71,7 +73,7 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                //name: 'RMS',
                 symbol: 'none',
                 data: data.y
             }]
@@ -90,7 +92,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '时域图',
         },
         toolbox: {
             feature: {
@@ -106,8 +108,8 @@ $(document).ready(function () {
             boundaryGap: false,
             data: [],
             /*axisLabel: {
-                interval: 0
-            }*/
+             interval: 0
+             }*/
 
         },
         yAxis: {
@@ -141,7 +143,7 @@ $(document).ready(function () {
     });
 
 // 异步加载数据
-    $.get('/time_base/F0020001001_1001').done(function (data) {
+    $.get('/time_base/' + urlTag).done(function (data) {
         // 填入数据
         timeChart.setOption({
             xAxis: {
@@ -149,13 +151,12 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                name: '',
                 symbol: 'none',
                 data: data.y
             }]
         });
     });
-
 
 
     /**
@@ -171,7 +172,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '',
+            text: '频域图',
         },
         toolbox: {
             feature: {
@@ -186,9 +187,9 @@ $(document).ready(function () {
             type: 'category',
             boundaryGap: false,
             data: [],
-           /* axisLabel: {
-                interval: 0
-            }*/
+            /* axisLabel: {
+             interval: 0
+             }*/
 
         },
         yAxis: {
@@ -222,7 +223,7 @@ $(document).ready(function () {
     });
 
 // 异步加载数据
-    $.get('/spectrum_data/F0020001001_1001').done(function (data) {
+    $.get('/spectrum_data/' + urlTag).done(function (data) {
         // 填入数据
         spectrumChart.setOption({
             xAxis: {
@@ -230,14 +231,12 @@ $(document).ready(function () {
             },
             series: [{
                 // 根据名字对应到相应的系列
-                name: 'RMS',
+                //name: 'RMS',
                 symbol: 'none',
                 data: data.y
             }]
         });
     });
-
-
 
 
 });

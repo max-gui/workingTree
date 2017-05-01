@@ -37,15 +37,15 @@ router.get('/:sensor_code', function (req, res) {
 
     var promise = get_timebae_q(req.params.sensor_code);
     promise.then(function (data) {
-        // var ret = {
-        //     x : Array.apply(null, {length: data.data.sample_data.length}).map(Number.call, Number),
-        //     y : data.data.sample_data
-        // };
+         var ret = {
+             x : Array.apply(null, {length: data.data.sample_data.length}).map(Number.call, Number),
+             y : data.data.sample_data
+         };
 
-        var ret = {
-            x : Array.apply(null, {length: data.data.sample_count}).map(Number.call, Number),
-            y : Array.apply(null, {length: data.data.sample_count}).map(Function.call, Math.random)
-        };
+        //var ret = {
+        //    x : Array.apply(null, {length: data.data.sample_count}).map(Number.call, Number),
+        //    y : Array.apply(null, {length: data.data.sample_count}).map(Function.call, Math.random)
+        //};
         res.send(ret);
 
     });

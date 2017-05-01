@@ -12,7 +12,7 @@ router.get('/info/:tag', function (req, res) {
     console.log(req.path);
     var promise = cms_interface.deviceHelp.get_sensor_data_q(req.params.tag);
     var pp = promise.then(function (data) {
-        res.render("cms_sensor", {sensorInfo: data});
+        res.render("cms_sensor", {sensorInfo: data,urlTag:req.params.tag});
     });
 });
 

@@ -114,6 +114,7 @@ var io = require('socket.io')(server);
 
 setInterval(function () {
     //var tt =io.sockets.clients().connected.keys;
+    //Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
     if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
     {
         console.dir(io.sockets.clients().connected.length);
