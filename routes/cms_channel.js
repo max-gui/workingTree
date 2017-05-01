@@ -1,10 +1,9 @@
-/*环路路由文件*/
+/*锟斤拷路路锟斤拷锟侥硷拷*/
 
 var express = require('express');
 var router = express.Router();
 var mongoHelp = require('./mongo');
 var Q = require('q');
-var redis = require("redis");
 var cms_interface = require("./cms_circuit_device");
 
 
