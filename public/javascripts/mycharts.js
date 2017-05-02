@@ -14,7 +14,7 @@ $(document).ready(function () {
         },
         title: {
             left: 'center',
-            text: '时域图',
+            text: '趋势图',
         },
         toolbox: {
             feature: {

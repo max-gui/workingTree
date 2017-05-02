@@ -12,7 +12,8 @@ router.get('/circuit_device/info/:id', function (req, res) {
     var pp = promise.then(function (data) {
 
         mongoHelp.mongoInit("event_history", function (err, collection) {
-            collection.find({"entity_id": req.params.entity_id}).toArray(function (err, doc) {
+
+            collection.find({"code": req.params.id}).toArray(function (err, doc) {
                 var result = new Object();
                 //assert.equal(err, null);
                 //assert.equal(doc.length, 1);
@@ -26,7 +27,7 @@ router.get('/circuit_device/info/:id', function (req, res) {
                     result.message = "nothing was found";
                 }
 
-                //res.send(data);
+                //res.send(result);
                 res.render('cms_fan', {fanData: result, infoData: data});
             })
         });

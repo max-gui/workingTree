@@ -1,33 +1,39 @@
-.table > thead > tr > th{
-    		border-bottom:0px;
- }
-.table > thead > tr > th{
+.table > thead > tr > th {
+    border-bottom: 0px;
+}
+
+.table > thead > tr > th {
     text-align: center;
 }
-.table > tbody > tr > td{
+
+.table > tbody > tr > td {
     text-align: center;
 }
-.table > tbody > tr > th{
+
+.table > tbody > tr > th {
     text-align: center;
 }
-.icon-border{
-	border:0px;
+
+.icon-border {
+    border: 0px;
 }
 
 /*.info-panel .ctrl-btn-group.btn-group-border{
 	border:0px;
 }*/
-.wind-info-title{
-	line-height:30px;
-	 margin:0px;
+.wind-info-title {
+    line-height: 30px;
+    margin: 0px;
 }
-.information-table-container{
-	height: 280px; 
-	overflow-y: auto; 
-	border:1px solid #444;
+
+.information-table-container {
+    height: 280px;
+    overflow-y: auto;
+    border: 1px solid #444;
 }
-.event-table-container{
-	height: 400px; 
-	overflow-y: auto; 
-	border:1px solid #444;
+
+.event-table-container {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #444;
 }

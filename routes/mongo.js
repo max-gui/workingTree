@@ -1,24 +1,46 @@
-
 var MongoClient = require('mongodb').MongoClient;
 
-var url = 'mongodb://oudot.vicp.io:12307/fengdian_cms';
-var mongoInit = function (collectName, collectAction) {
-        MongoClient.connect(url, function (err, db) {
-            //assert.equal(null, err);
 
-            console.log("Connected correctly to server.");
-            db.collection(collectName, collectAction);
-            db.close();
-        });
+/**/
+//mongodb数据库连接相关配置
+
+var fs = require("fs");
+var basePath = process.cwd();
+basePath = basePath.indexOf("bin") != -1 ? basePath.substr(0, basePath.indexOf("bin") - 1) : basePath;
+var objConfig = JSON.parse(fs.readFileSync(basePath + "/config/config.json", "utf8"));
+
+var url = "";
+if (objConfig.mongodb != null) {
+    if (objConfig.mongodb.USERNAME != "") {
+        url = "mongodb://" + objConfig.mongodb.USERNAME + ":"
+            + objConfig.mongodb.PASSWORD + "@" + objConfig.mongodb.IP + ":"
+            + objConfig.mongodb.PORT + "/" + objConfig.mongodb.DBNAME;
+    } else {
+        url = "mongodb://" + objConfig.mongodb.IP + ":"
+            + objConfig.mongodb.PORT + "/" + objConfig.mongodb.DBNAME;
     }
+}
+
+/**/
+
+//var url = 'mongodb://oudot.vicp.io:12307/fengdian_cms';
+var mongoInit = function (collectName, collectAction) {
+    MongoClient.connect(url, function (err, db) {
+        //assert.equal(null, err);
+
+        console.log("Connected correctly to server.");
+        db.collection(collectName, collectAction);
+        db.close();
+    });
+}
 
 var mongoHelp = {
-    myurl : url,
+    myurl: url,
 
-    getcms_circuit : function (wfId, actData) {
+    getcms_circuit: function (wfId, actData) {
         console.log(wfId);
         mongoInit("cms_circuit", function (err, collection) {
-            collection.find({ "wfId": wfId }).toArray(function (err, doc) {
+            collection.find({"wfId": wfId}).toArray(function (err, doc) {
                 //assert.equal(err, null);
                 var result = new Object();
                 if (doc != null) {
@@ -39,11 +61,11 @@ var mongoHelp = {
         });
     },
 
-    getcms_circuit_q : function (wfId, callback) {
+    getcms_circuit_q: function (wfId, callback) {
         console.log(wfId);
         var deffered = Q.defer();
         mongoInit("cms_circuit", function (err, collection) {
-            collection.find({ "wfId": wfId }).toArray(function (err, doc) {
+            collection.find({"wfId": wfId}).toArray(function (err, doc) {
                 //assert.equal(err, null);
                 var result = new Object();
                 if (doc != null) {
@@ -66,9 +88,9 @@ var mongoHelp = {
         return deffered.promise.nodeify(callback);
     },
 
-    mongoInit : mongoInit,
+    mongoInit: mongoInit,
 
-    mongoFindAll : function (collectName, act) {
+    mongoFindAll: function (collectName, act) {
         var result = new Object();
 
         mongoInit(collectName, function (err, collection) {
@@ -92,7 +114,7 @@ var mongoHelp = {
         });
     },
 
-    mongoAddOne : function (collectName, value, act) {
+    mongoAddOne: function (collectName, value, act) {
         var result = new Object();
 
         mongoInit(collectName, function (err, collection) {
@@ -111,13 +133,13 @@ var mongoHelp = {
         //db.close();
     },
 
-    mongoPutOne : function (collectName, value, act) {
+    mongoPutOne: function (collectName, value, act) {
         var result = new Object();
 
         mongoInit(collectName, function (err, collection) {
             console.log("in");
-            collection.findOneAndUpdate({ _id: value._id }
-                , { $set: value.body }
+            collection.findOneAndUpdate({_id: value._id}
+                , {$set: value.body}
                 , function (err, r) {
                     //assert.equal(null, err);
                     //assert.equal(1, r.lastErrorObject.n);
@@ -128,12 +150,12 @@ var mongoHelp = {
         });
     },
 
-    mongoDeleteOne : function (collectName, value, act) {
+    mongoDeleteOne: function (collectName, value, act) {
         var result = new Object();
 
         mongoInit(collectName, function (err, collection) {
             console.log("in");
-            collection.findOneAndDelete({ _id: value._id }
+            collection.findOneAndDelete({_id: value._id}
                 , function (err, r) {
                     //assert.equal(null, err);
                     //assert.equal(1, r.lastErrorObject.n);
@@ -145,8 +167,6 @@ var mongoHelp = {
         });
     }
 }
-
-
 
 
 module.exports = mongoHelp;

@@ -4,6 +4,8 @@ var mongoHelp = require('./mongo');
 var Q = require('q');
 var redis = require("redis");
 
+var client = require('./../config/rdb');
+
 var getcms_circuit_q = function (wfId, callback) {
     console.log(wfId);
     var deffered = Q.defer();
@@ -59,10 +61,10 @@ var get_turbine_mongo_q = function (term, callback) {
 }
 
 var getcms_circuit_device_q = function (deviceUniKey, callback) {
-    var client = redis.createClient(19000, "hao.oudot.cn");
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
+    //var client = redis.createClient(19000, "hao.oudot.cn");
+    //client.on("error", function (err) {
+    //    console.log("Error " + err);
+    //});
     console.log(deviceUniKey);
     var deffered = Q.defer();
     client.hgetall("cms:circuit:" + deviceUniKey, function (err, replies) {
@@ -78,10 +80,10 @@ var getcms_circuit_device_q = function (deviceUniKey, callback) {
 }
 
 var get_turbine_status_q = function (termIpno, turbineId, callback) {
-    var client = redis.createClient(19000, "hao.oudot.cn");
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
+    //var client = redis.createClient(19000, "hao.oudot.cn");
+    //client.on("error", function (err) {
+    //    console.log("Error " + err);
+    //});
     console.log(termIpno);
     var deffered = Q.defer();
     client.hget("cms:turbineStatus:" + termIpno, turbineId, function (err, replies) {
@@ -366,10 +368,10 @@ var deviceHelp = {
             });
     },
     get_turbine_status_all_q: function (termIpno, callback) {
-        var client = redis.createClient(19000, "hao.oudot.cn");
-        client.on("error", function (err) {
-            console.log("Error " + err);
-        });
+        //var client = redis.createClient(19000, "hao.oudot.cn");
+        //client.on("error", function (err) {
+        //    console.log("Error " + err);
+        //});
         console.log(termIpno);
         var deffered = Q.defer();
         client.hgetall("cms:turbineStatus:" + termIpno, function (err, replies) {
@@ -384,16 +386,17 @@ var deviceHelp = {
         return deffered.promise.nodeify(callback);
     },
     get_turbine_data_q: function (id, callback) {
-        var client = redis.createClient(19000, "hao.oudot.cn");
-        client.on("error", function (err) {
-            console.log("Error " + err);
-        });
+        //var client = redis.createClient(19000, "hao.oudot.cn");
+        //client.on("error", function (err) {
+        //    console.log("Error " + err);
+        //});
         console.log(id);
         var deffered = Q.defer();
         client.hgetall("cms:turbineData:" + id, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
-            };
+            }
+            ;
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);
@@ -401,16 +404,17 @@ var deviceHelp = {
         return deffered.promise.nodeify(callback);
     },
     get_sensor_data_q: function (tag, callback) {
-        var client = redis.createClient(19000, "hao.oudot.cn");
-        client.on("error", function (err) {
-            console.log("Error " + err);
-        });
+        //var client = redis.createClient(19000, "hao.oudot.cn");
+        //client.on("error", function (err) {
+        //    console.log("Error " + err);
+        //});
         console.log(tag);
         var deffered = Q.defer();
         client.hgetall("cms:senorData:" + tag, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
-            };
+            }
+            ;
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);
@@ -418,10 +422,10 @@ var deviceHelp = {
         return deffered.promise.nodeify(callback);
     },
     getcms_device_info_q: function (devicetag, callback) {
-        var client = redis.createClient(19000, "hao.oudot.cn");
-        client.on("error", function (err) {
-            console.log("Error " + err);
-        });
+        //var client = redis.createClient(19000, "hao.oudot.cn");
+       //client.on("error", function (err) {
+        //     console.log("Error " + err);
+        // });
         console.log(devicetag);
         var deffered = Q.defer();
         client.hgetall("cms:" + devicetag, function (err, replies) {
