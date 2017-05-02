@@ -423,7 +423,7 @@ var deviceHelp = {
     },
     getcms_device_info_q: function (devicetag, callback) {
         //var client = redis.createClient(19000, "hao.oudot.cn");
-       //client.on("error", function (err) {
+        //client.on("error", function (err) {
         //     console.log("Error " + err);
         // });
         console.log(devicetag);

@@ -76,7 +76,7 @@ app.use(function (err, req, res, next) {
 });
 
 
-var redis = require("redis");
+var redis = require("./routes/redis_help");
 var Q = require('q');
 
 var server = require('http').createServer(app);
@@ -140,24 +140,24 @@ setInterval(function () {
 
 // cms_device_info_sub.subscribe("cms_device_info");
 // cms_device_status_sub.subscribe("cms_device_status");
-var test = function (testtag, callback) {
-    var client = redis.createClient(19000, "hao.oudot.cn");
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
-    var deffered = Q.defer();
-    client.keys(testtag, function (err, replies) {
+// var test = function (testtag, callback) {
+//     var client = redis.createClient(19000, "hao.oudot.cn");
+//     client.on("error", function (err) {
+//         console.log("Error " + err);
+//     });
+//     var deffered = Q.defer();
+//     client.keys(testtag, function (err, replies) {
 
-        console.log("last");
-        console.dir(replies);
-        deffered.resolve(replies);
-    });
-    return deffered.promise.nodeify(callback);
-};
+//         console.log("last");
+//         console.dir(replies);
+//         deffered.resolve(replies);
+//     });
+//     return deffered.promise.nodeify(callback);
+// };
 
 var get_teststatus = function (req, res) {
 
-    var promise = test("cms:turbineStatus:*");
+    var promise = redis.test("cms:turbineStatus:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
             return d.split("Status:")[1];
@@ -190,7 +190,7 @@ var get_teststatus = function (req, res) {
 
 var get_testtinfo = function (req, res) {
 
-    var promise = test("cms:turbineData:*");
+    var promise = redis.test("cms:turbineData:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
             return d.split("turbineData:")[1];
@@ -222,7 +222,7 @@ var get_testtinfo = function (req, res) {
 
 var get_testsinfo = function (req, res) {
 
-    var promise = test("cms:senorData:*");
+    var promise = redis.test("cms:senorData:*");
     return promise.then(function (data) {
         var m = data.map(function (d) {
             return d.split("senorData:")[1];

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoHelp = require('./mongo');
 var Q = require('q');
-var redis = require("redis");
+var redis = require("./redis_help");
 
 var cd = require('./cms_circuit_device');
 
@@ -38,9 +38,9 @@ var get_tend_xy_q = function (sensor_code, callback) {
 
             return acc;
         }, {
-            x: [],
-            y: []
-        });
+                x: [],
+                y: []
+            });
         return rd;
     });
 };
@@ -61,22 +61,20 @@ router.get('/:sensor_code', function (req, res) {
 });
 
 var test = function (testtag, callback) {
-    var client = redis.createClient(19000, "hao.oudot.cn");
-    client.on("error", function (err) {
-        console.log("Error " + err);
-    });
     var deffered = Q.defer();
-    client.keys(testtag, function (err, replies) {
+    var client = redis.init(function (client) {
+        client.keys(testtag, function (err, replies) {
 
-        console.log("last");
-        console.dir(replies);
-        deffered.resolve(replies);
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
     });
     return deffered.promise.nodeify(callback);
 }
 
 router.get('/teststatus/:d', function (req, res) {
-    
+
     var promise = test("cms:turbineStatus:*");
     promise.then(function (data) {
         var m = data.map(function (d) {
@@ -98,7 +96,7 @@ router.get('/teststatus/:d', function (req, res) {
                     result[key] = md[key];
                 }
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
@@ -110,7 +108,7 @@ router.get('/teststatus/:d', function (req, res) {
 });
 
 router.get('/testtinfo/:d', function (req, res) {
-    
+
     var promise = test("cms:turbineData:*");
     promise.then(function (data) {
         var m = data.map(function (d) {
@@ -130,7 +128,7 @@ router.get('/testtinfo/:d', function (req, res) {
             ov.map(function (md) {
                 result[md.tag] = md;
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
@@ -142,7 +140,7 @@ router.get('/testtinfo/:d', function (req, res) {
 });
 
 router.get('/testsinfo/:d', function (req, res) {
-    
+
     var promise = test("cms:senorData:*");
     promise.then(function (data) {
         var m = data.map(function (d) {
@@ -162,7 +160,7 @@ router.get('/testsinfo/:d', function (req, res) {
             ov.map(function (md) {
                 result[md.tag] = md;
             });
-            var temp ={
+            var temp = {
                 data: data,
                 m: m,
                 da: result
