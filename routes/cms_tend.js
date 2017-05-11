@@ -62,7 +62,7 @@ router.get('/:sensor_code', function (req, res) {
 
 var test = function (testtag, callback) {
     var deffered = Q.defer();
-    var client = redis.init(function (client) {
+    redis.init(function (client) {
         client.keys(testtag, function (err, replies) {
 
             console.log("last");

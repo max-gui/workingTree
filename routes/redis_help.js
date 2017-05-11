@@ -29,10 +29,9 @@ var redisHelp = {
         client.on("error", function (err) {
                 client.log("Error " + err);
             });
-            
-        var flag = action(client);
+
+        action(client)
         client.quit();
-        return flag;
     }
 }
 
