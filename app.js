@@ -21,6 +21,7 @@ var cms_channel = require('./routes/cms_channel');
 var cms_fan = require('./routes/cms_fan');
 var cms_sensor = require('./routes/cms_sensor');
 var cms_mg = require('./routes/cms_mg');
+var realtime = require('./routes/realtime');
 /*/路由*/
 
 var app = express();
@@ -76,11 +77,11 @@ app.use(function (err, req, res, next) {
 });
 
 
-var redis = require("./routes/redis_help");
-var Q = require('q');
+// var redis = require("./routes/redis_help");
+// var Q = require('q');
 
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+// var server = require('http').createServer(app);
+// var io = require('socket.io')(server);
 
 // var cms_device_info_sub = redis.createClient(19000, "hao.oudot.cn");
 
@@ -112,31 +113,7 @@ var io = require('socket.io')(server);
 //     });
 // });
 
-setInterval(function () {
-    //var tt =io.sockets.clients().connected.keys;
-    //Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
-    if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
-    {
-        console.dir(io.sockets.clients().connected.length);
-        var promise = get_teststatus();//deviceTag
-        promise.then(function (data) {
-            console.log(data);
-            io.emit('cms_status_info', data);
-        });
 
-        var promise2 = get_testsinfo();//wfid
-        promise2.then(function (data) {
-            console.log(data);
-            io.emit('cms_sensor_info', data);
-        });
-
-        var promise3 = get_testtinfo();//wfid
-        promise3.then(function (data) {
-            console.log(data);
-            io.emit('cms_turbine_info', data);
-        });
-    }
-}, 5000);
 
 // cms_device_info_sub.subscribe("cms_device_info");
 // cms_device_status_sub.subscribe("cms_device_status");
@@ -155,118 +132,26 @@ setInterval(function () {
 //     return deffered.promise.nodeify(callback);
 // };
 
-var get_teststatus = function (req, res) {
+// io.on('connection', function () { /* … */
+// });
 
-    var promise = redis.test("cms:turbineStatus:*");
-    return promise.then(function (data) {
-        var m = data.map(function (d) {
-            return d.split("Status:")[1];
-        })
-        var am = m.map(function (tag) {
-            return circuit_device.deviceHelp.get_turbine_status_all_q(tag).then(function (da) {
-                return da;
+// server.listen(4000, function () {
+//     console.log('ws app listening on port 4000!');
+// });
 
-            });
-        });
+// io.sockets.on('connection', function (socket) {
+//     socket.emit('news', {hello: 'world'});//前端通过socket.on("news")获取
+//     socket.on('paper', function (data) {//前端通过socket.emit('paper')发送
+//         socket.emit('news', {hello: 'world'});
 
-        return Q.all(am).then(function (ov) {
+//         console.log(data);
+//     });
+// });
 
-            var result = {};
-            ov.map(function (md) {
+// var ttt = require('./config/rdb');
+// ttt.get('test',function(err, res){
+//     console.log(res)})
 
-                for (var key in md) {
-                    result[key] = Math.floor((Math.random() * 5) + 0);//md[key];
-                }
-            });
-            var temp = {
-                data: data,
-                m: m,
-                da: result
-            };
-            return result;
-        });
-    });
-};
-
-var get_testtinfo = function (req, res) {
-
-    var promise = redis.test("cms:turbineData:*");
-    return promise.then(function (data) {
-        var m = data.map(function (d) {
-            return d.split("turbineData:")[1];
-        })
-        var am = m.map(function (tag) {
-            return circuit_device.deviceHelp.get_turbine_data_q(tag).then(function (da) {
-                da.tag = tag
-                da.power_factor = Math.floor((Math.random() * 20) + -10)
-                return da;
-
-            });
-        });
-
-        return Q.all(am).then(function (ov) {
-
-            var result = {};
-            ov.map(function (md) {
-                result[md.tag] = md;
-            });
-            var temp = {
-                data: data,
-                m: m,
-                da: result
-            };
-            return result;
-        });
-    });
-}
-
-var get_testsinfo = function (req, res) {
-
-    var promise = redis.test("cms:senorData:*");
-    return promise.then(function (data) {
-        var m = data.map(function (d) {
-            return d.split("senorData:")[1];
-        })
-        var am = m.map(function (tag) {
-            return circuit_device.deviceHelp.get_sensor_data_q(tag).then(function (da) {
-                da.tag = tag
-                da.J_BPFI = Math.floor((Math.random() * 101) + 0)
-                return da;
-
-            });
-        });
-
-        return Q.all(am).then(function (ov) {
-
-            var result = {};
-            ov.map(function (md) {
-                result[md.tag] = md;
-            });
-            var temp = {
-                data: data,
-                m: m,
-                da: result
-            };
-            return result;
-        });
-    });
-}
-
-io.on('connection', function () { /* … */
-});
-
-server.listen(4000, function () {
-    console.log('ws app listening on port 4000!');
-});
-
-io.sockets.on('connection', function (socket) {
-    socket.emit('news', {hello: 'world'});//前端通过socket.on("news")获取
-    socket.on('paper', function (data) {//前端通过socket.emit('paper')发送
-        socket.emit('news', {hello: 'world'});
-
-        console.log(data);
-    });
-});
-
+realtime.refresh();
 
 module.exports = app;
