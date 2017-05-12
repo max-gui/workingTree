@@ -56,8 +56,13 @@ var get_testtinfo = function (req, res) {
 
             var result = {};
             ov.map(function (md) {
-                result[md.tag] = md;
-                delete result[md.tag].tag;
+                var tagTmp = md.tag;
+                delete md.tag;
+                result[tagTmp] = md;
+                for (var key in result[tagTmp]) {
+                    result[tagTmp][key] = JSON.parse(result[tagTmp][key])
+                }
+                // result[md.tag] = JSON.parse()
             });
             var temp = {
                 data: data,
@@ -102,31 +107,33 @@ var get_testsinfo = function (req, res) {
 }
 
 var realtime = {
-    refresh : function(){
-    setInterval(function () {
-    //var tt =io.sockets.clients().connected.keys;
-    //Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
-    if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
-    {
-        // console.dir(io.sockets.clients().connected.length);
-        var promise = get_teststatus();//deviceTag
-        promise.then(function (data) {
-            console.log(data);
-            io.emit('cms_status_info', data);
-        });
+    refresh: function () {
+        setInterval(function () {
+            //var tt =io.sockets.clients().connected.keys;
+            //Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+            if (Object.keys(io.sockets.clients().connected).length != 0)///.connected == {});
+            {
+                // console.dir(io.sockets.clients().connected.length);
+                var promise = get_teststatus();//deviceTag
+                promise.then(function (data) {
+                    console.log(data);
+                    io.emit('cms_status_info', data);
+                });
 
-        var promise2 = get_testsinfo();//wfid
-        promise2.then(function (data) {
-            console.log(data);
-            io.emit('cms_sensor_info', data);
-        });
+                var promise2 = get_testsinfo();//wfid
+                promise2.then(function (data) {
+                    console.log(data);
+                    io.emit('cms_sensor_info', data);
+                });
 
-        var promise3 = get_testtinfo();//wfid
-        promise3.then(function (data) {
-            console.log(data);
-            io.emit('cms_turbine_info', data);
-        });
+                var promise3 = get_testtinfo();//wfid
+                promise3.then(function (data) {
+                    console.log(data);
+                    io.emit('cms_turbine_info', data);
+                });
+            }
+        }, 5000);
     }
-}, 5000);}}
+}
 
 module.exports = realtime;
