@@ -46,7 +46,7 @@ var get_testtinfo = function (req, res) {
         var am = m.map(function (tag) {
             return circuit_device.deviceHelp.get_turbine_data_q(tag).then(function (da) {
                 da.tag = tag
-                da.power_factor = Math.floor((Math.random() * 20) + -10)
+                // da.power_factor = Math.floor((Math.random() * 20) + -10)
                 return da;
 
             });
@@ -57,6 +57,7 @@ var get_testtinfo = function (req, res) {
             var result = {};
             ov.map(function (md) {
                 result[md.tag] = md;
+                delete result[md.tag].tag;
             });
             var temp = {
                 data: data,
