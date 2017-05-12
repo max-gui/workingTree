@@ -77,8 +77,7 @@
     <div class="bread-crumb">
         <strong>当前位置：</strong>
         <a href="云端-首页.html">云端首页</a> &gt;
-        <a href="云端-智能监控-风场监控-视图.html">智能监控</a>
-        &gt; <a href="本地风场-监控-风场页-视图.html">监控</a> &gt; 报警门限管理
+        <a href="本地风场-监控-风场页-视图.html">CMS</a> &gt; 报警门限管理
     </div>
     <ul class="nav-list clearfix">
         <li><a href="javascript:;"><span class="glyphicon glyphicon-eye-open"></span> 监控 <span class="caret"></span></a>
@@ -304,7 +303,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">测点名称</label>
+                        <label for="" class="col-sm-3 contro    l-label">测点名称</label>
 
                         <div class="col-sm-8">
                             <input type="text" class="form-control input-sm" value="" size="8">
@@ -389,9 +388,6 @@
     });
 
     $(".checkIndex").click(function () {
-        var _guid = $(this).attr("data-guid");
-        var tr_guid = $(this).parent("td").parent("tr").attr("id");
-        var index = $(this).attr("value");
 
         $("#fan_name").val($(this).parent().siblings().eq(0).text());
         $("#station_name").val($(this).parent().siblings().eq(1).text());
@@ -399,22 +395,6 @@
         $("#apex_warning").val($(this).parent().siblings().eq(3).text());
         $("#apex_alarm").val($(this).parent().siblings().eq(4).text());
 
-        /*获取页面render时的数据并转换*/
-        /*var data = "<%=JSON.stringify(alarmData.data)%>";
-         var ele = document.createElement('span');
-         ele.innerHTML = data;
-         data = ele.textContent;
-         var test = JSON.parse(data);
-
-         if (_guid === tr_guid) {
-
-         $("#myModal1 #fan_name").val(test[index].fanName);
-         $("#myModal1 #station_name").val(test[index].measuringName);
-         $("#myModal1 #rms").val(test[index].RMScordon);
-         $("#myModal1 #apex_warning").val(test[index].warningLine);
-         $("#myModal1 #apex_alarm").val(test[index].policeLine);
-
-         }*/
     });
 
 </script>
