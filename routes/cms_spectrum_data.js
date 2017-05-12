@@ -6,7 +6,7 @@ var Q = require('q');
 var get_spectrum_q = function (sensor_code, callback) {
     var deffered = Q.defer();
     mongoHelp.mongoInit("cms_spectrum", function (err, collection) {
-        collection.find({"sensor_code": sensor_code}).toArray(function (err, doc) {
+        collection.find({"sensor_code": sensor_code}).sort({sample_time:-1}).limit(1).toArray(function (err, doc) {
             var result = new Object();
             //assert.equal(err, null);
             //assert.equal(doc.length, 1);
