@@ -418,7 +418,6 @@ var deviceHelp = {
         var deffered = Q.defer();
         redis.init(function (client) {
         console.log(devicetag);
-        var deffered = Q.defer();
         client.hgetall("cms:" + devicetag, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
