@@ -9,23 +9,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>上海电气智能风电</title>
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/skin-black.css" rel="stylesheet" id="skinCss">
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet">
+    <link href="/stylesheets/skin-black.css" rel="stylesheet" id="skinCss">
     <!-- mCustomScrollbar 滚动条 -->
-    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <link href="/stylesheets/jquery.mCustomScrollbar.css" rel="stylesheet">
 </head>
 <body>
 <!-- ***** HEADER ***** -->
 <header id="header">
-    <div class="logo pull-left"><a href="云端-首页.html" title="上海电气智能风电风云"><img src="images/logo.png" width="120"
+    <div class="logo pull-left"><a href="云端-首页.html" title="上海电气智能风电风云"><img src="/images/logo.png" width="120"
                                                                              height="30" alt="上海电气"> 智能风电<img
-            src="images/logo-fengyun.png" width="40" height="30" alt="风云"></a>
+            src="/images/logo-fengyun.png" width="40" height="30" alt="风云"></a>
         <small>智能监控系统</small>
     </div>
-    <div class="wind-farm-name pull-left"><img src="tmp/user-logo.jpg"> 临港风电场</div>
+    <div class="wind-farm-name pull-left"><img src="/tmp/user-logo.jpg"> 临港风电场</div>
     <div class="member-info pull-right"><span href="#">张三</span> <span class="dropdown"><a href="javascript:;"
                                                                                            title="信息"
                                                                                            class="dropdown-toggle"
@@ -128,26 +128,17 @@
             </tr>
             </thead>
             <tbody>
-            <% names.forEach(function(name){ %>
             <tr>
-                <td><%= name.var1 %></td>
-                <td><%= name.var2 %></td>
-                <%if(name.var3  == "type1"){%>
-                <td>type1</td>
-                <%}
-                if(name.var3 == "type2"){%>
-                <td>type2</td>
-                <%}
-                if(name.var3 == "type3"){%>
-                <td>type3</td>
-                <%}%>
-                <th><%= name.var4 %></td>
-                <td><%= name.var5 %></td>
-                <td><%= name.var6 %></td>
-                <td><%= name.var7 %></td>
-                <td><a href="#" data-toggle="modal" data-target="#myCheck">查看</a>&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;<a href="#">删除</a></td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td><a href="#" data-toggle="modal" data-target="#myCheck">查看</a>&nbsp;&nbsp;<a href="#">修改</a>&nbsp;&nbsp;<a
+                        href="#">删除</a></td>
             </tr>
-            <% }) %>
             </tbody>
         </table>
         <!-- /表格 -->
@@ -173,60 +164,124 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加轴承</h4>
+                <h4 class="modal-title" id="myModalLabel">添加轴承数据库</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">轴承型号</label>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="exampleInputName2" style="color:#5D5F62;">轴承型号</label>
+                                <input style="color: #000;border: 1px solid #ddd;width: 100px;" type="text"
+                                       class="form-control input-sm" id="exampleInputName2" placeholder=""
+                                       disabled="disabled"
+                                       value="6324">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail2" style="color:#5D5F62;">制造厂商</label>
+                                <select class="form-control">
+                                    <option>SKF</option>
+                                </select>
+                                <!--<input style="" type="email" class="form-control input-sm" id="exampleInputEmail2" placeholder="">-->
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName3" style="color:#5D5F62;">轴承类型</label>
+                                <input style="color: #000;border: 1px solid #ddd;" type="text"
+                                       class="form-control input-sm" id="exampleInputName3" placeholder=""
+                                       disabled="disabled"
+                                       value="深沟球轴承">
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
+                <div class="row col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">特征频率(阶段)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BPFI</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BPFO</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BSF</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">FTF</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">制作厂商</label>
+                </div>
 
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
+                <div class="row col-sm-3" style="text-align: center;width: 27%;margin-top: 100px;">
+                    <button class="btn btn-default" type="submit">计算</button>
+                </div>
+
+                <div class="row col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">特征频率(Hz)</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BPFI</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632"
+                                               disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BPFO</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632"
+                                               disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">BSF</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632"
+                                               disabled="disabled">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-4 control-label">FTF</label>
+
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="" placeholder="" value="73.2632"
+                                               disabled="disabled">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">轴承类型</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">转速</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">滚子数</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">滚子直径</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">内圈直径</label>
-
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="" size="8">
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">提交</button>
@@ -250,49 +305,49 @@
                         <label for="" class="col-sm-3 control-label">轴承型号</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= bearingModel%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">制作厂商</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= production%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">轴承类型</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= bearingType%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">转速</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= speedNum%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">滚子数</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= RollerNum%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">滚子直径</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= RollerDiameter%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">内圈直径</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control input-sm" value="<%= InnerDiameter%>" size="8">
+                            <input type="text" class="form-control input-sm" value="" size="8">
                         </div>
                     </div>
                 </form>
@@ -306,10 +361,10 @@
 </div>
 <!-- /MODAL -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.11.2.min.js"></script>
+<script src="/javascripts/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/jquery.cookie.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="/javascripts/jquery.cookie.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
 <script>
     $(function () {
         //提示框
@@ -317,13 +372,13 @@
     });
 </script>
 <!-- holder 图片生成 -->
-<script src="js/holder.min.js"></script>
+<script src="/javascripts/holder.min.js"></script>
 <!-- mCustomScrollbar 滚动条 -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="/javascripts/jquery.mCustomScrollbar.concat.min.js"></script>
 <!-- 全局 -->
-<script src="js/script.js"></script>
+<script src="/javascripts/script.js"></script>
 <!–[if IE]>
-<script src="js/html5.js"></script>
+<script src="/javascripts/html5.js"></script>
 <![endif]–>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

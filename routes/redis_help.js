@@ -27,7 +27,7 @@ var redisHelp = {
     init: function (action) {
         var client = redis.createClient(19000, "hao.oudot.cn");
         client.on("error", function (err) {
-                client.log("Error " + err);
+                console.log("Error " + err);
             });
 
         action(client)
