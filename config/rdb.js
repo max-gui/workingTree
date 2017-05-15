@@ -1,8 +1,8 @@
 //redis数据库连接配置相关内容
 var redis = require("redis");
 var blueBird = require("bluebird"); //blueBird使redis查询同步
-blueBird.promisifyAll(redis.RedisClient.prototype);
-blueBird.promisifyAll(redis.Multi.prototype);
+// blueBird.promisifyAll(redis.RedisClient.prototype);
+// blueBird.promisifyAll(redis.Multi.prototype);
 var fs = require("fs");
 var basePath = process.cwd();
 basePath = basePath.indexOf("bin") != -1 ? basePath.substr(0, basePath.indexOf("bin") - 1) : basePath;

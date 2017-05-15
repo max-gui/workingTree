@@ -61,18 +61,17 @@ var get_turbine_mongo_q = function (term, callback) {
 var getcms_circuit_device_q = function (deviceUniKey, callback) {
     var deffered = Q.defer();
 
-    redis.init(function (client) {
+    // redis.init(function (client) {
 
-        console.log(deviceUniKey);
-        client.hgetall("cms:circuit:" + deviceUniKey, function (err, replies) {
-            for (var key in replies) {
-                console.log(key + ': ' + replies[key]);
-            }
-            ;
-            console.log("last");
-            console.dir(replies);
-            deffered.resolve(replies);
-        });
+    console.log(deviceUniKey);
+    redis.client.hgetall("cms:circuit:" + deviceUniKey, function (err, replies) {
+        for (var key in replies) {
+            console.log(key + ': ' + replies[key]);
+        }
+        ;
+        console.log("last");
+        console.dir(replies);
+        deffered.resolve(replies);
     });
     return deffered.promise.nodeify(callback);
 }
@@ -80,18 +79,17 @@ var getcms_circuit_device_q = function (deviceUniKey, callback) {
 var get_turbine_status_q = function (termIpno, turbineId, callback) {
     var deffered = Q.defer();
 
-    redis.init(function (client) {
-        console.log(termIpno);
-        client.hget("cms:turbineStatus:" + termIpno, turbineId, function (err, replies) {
-            // for (var key in replies) {
-            //     console.log(key + ': ' + replies[key]);
-            // }
-            // ;
-            console.log("last");
-            console.dir(replies);
-            deffered.resolve(replies);
-        });
-    })
+    // redis.init(function (client) {
+    console.log(termIpno);
+    redis.client.hget("cms:turbineStatus:" + termIpno, turbineId, function (err, replies) {
+        // for (var key in replies) {
+        //     console.log(key + ': ' + replies[key]);
+        // }
+        // ;
+        console.log("last");
+        console.dir(replies);
+        deffered.resolve(replies);
+    });
     return deffered.promise.nodeify(callback);
 }
 
@@ -367,58 +365,25 @@ var deviceHelp = {
     get_turbine_status_all_q: function (termIpno, callback) {
 
         var deffered = Q.defer();
-        redis.init(function (client) {
-            console.log(termIpno);
-            client.hgetall("cms:turbineStatus:" + termIpno, function (err, replies) {
-                // for (var key in replies) {
-                //     console.log(key + ': ' + replies[key]);
-                // }
-                // ;
-                console.log("last");
-                console.dir(replies);
-                deffered.resolve(replies);
-            })
-        });
+        // redis.init(function (client) {
+        console.log(termIpno);
+        redis.client.hgetall("cms:turbineStatus:" + termIpno, function (err, replies) {
+            // for (var key in replies) {
+            //     console.log(key + ': ' + replies[key]);
+            // }
+            // ;
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        })
+        // });
         return deffered.promise.nodeify(callback);
     },
     get_turbine_data_q: function (id, callback) {
         var deffered = Q.defer();
-        redis.init(function (client) {
-            console.log(id);
-            client.hgetall("cms:turbineData:" + id, function (err, replies) {
-                for (var key in replies) {
-                    console.log(key + ': ' + replies[key]);
-                }
-                ;
-                console.log("last");
-                console.dir(replies);
-                deffered.resolve(replies);
-            });
-        });
-        return deffered.promise.nodeify(callback);
-    },
-    get_sensor_data_q: function (tag, callback) {
-        var deffered = Q.defer();
-        redis.init(function (client) {
-            console.log(tag);
-
-            client.hgetall("cms:senorData:" + tag, function (err, replies) {
-                for (var key in replies) {
-                    console.log(key + ': ' + replies[key]);
-                }
-                ;
-                console.log("last");
-                console.dir(replies);
-                deffered.resolve(replies);
-            });
-        })
-        return deffered.promise.nodeify(callback);
-    },
-    getcms_device_info_q: function (devicetag, callback) {
-        var deffered = Q.defer();
-        redis.init(function (client) {
-        console.log(devicetag);
-        client.hgetall("cms:" + devicetag, function (err, replies) {
+        // redis.init(function (client) {
+        console.log(id);
+        redis.client.hgetall("cms:turbineData:" + id, function (err, replies) {
             for (var key in replies) {
                 console.log(key + ': ' + replies[key]);
             }
@@ -426,7 +391,41 @@ var deviceHelp = {
             console.log("last");
             console.dir(replies);
             deffered.resolve(replies);
-        });})
+        });
+        // });
+        return deffered.promise.nodeify(callback);
+    },
+    get_sensor_data_q: function (tag, callback) {
+        var deffered = Q.defer();
+        // redis.init(function (client) {
+        console.log(tag);
+
+        redis.client.hgetall("cms:senorData:" + tag, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            }
+            ;
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
+        // })
+        return deffered.promise.nodeify(callback);
+    },
+    getcms_device_info_q: function (devicetag, callback) {
+        var deffered = Q.defer();
+        // redis.init(function (client) {
+        console.log(devicetag);
+        redis.client.hgetall("cms:" + devicetag, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            }
+            ;
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+            // });
+        })
         return deffered.promise.nodeify(callback);
     }
 
