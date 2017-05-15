@@ -6,7 +6,8 @@ var blueBird = require("bluebird"); //blueBird使redis查询同步
 var fs = require("fs");
 var basePath = process.cwd();
 basePath = basePath.indexOf("bin") != -1 ? basePath.substr(0, basePath.indexOf("bin") - 1) : basePath;
-var objConfig = JSON.parse(fs.readFileSync(basePath + "/config/config.json", "utf8"));
+var objConfig = require('./config.json');
+// var objConfig = JSON.parse(fs.readFileSync(basePath + "/config/config.json", "utf8"));
 var client;
 
 
