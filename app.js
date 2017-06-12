@@ -5,7 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
+var passport = require('passport');
 
+
+var realtime = require('./contorller/realtime');
+
+/*
 var index = require('./routes/index');
 var users = require('./routes/users');
 var spectrum = require('./routes/cms_spectrum');
@@ -16,13 +21,13 @@ var sensor_tend = require('./routes/cms_tend');
 var time_base = require('./routes/cms_timebase');
 var spectrum_data = require('./routes/cms_spectrum_data')
 
-/*路由*/
+/!*路由*!/
 var cms_channel = require('./routes/cms_channel');
 var cms_fan = require('./routes/cms_fan');
 var cms_sensor = require('./routes/cms_sensor');
 var cms_mg = require('./routes/cms_mg');
-var realtime = require('./routes/realtime');
-/*/路由*/
+/!*!/路由*!/
+*/
 
 var app = express();
 
@@ -39,6 +44,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+/*
 app.use('/', index);
 app.use('/users', users);
 app.use('/spectrum', spectrum);
@@ -49,14 +56,17 @@ app.use('/tend', sensor_tend);
 app.use('/time_base', time_base);
 app.use('/spectrum_data', spectrum_data);
 
-/*路由*/
+/!*路由*!/
 
 app.use('/cms_channel', cms_channel);//主页-环路
 app.use('/cms_fan', cms_fan);//风机-机舱
 app.use('/cms_sensor', cms_sensor);//传感器
 app.use('/cms_mg', cms_mg);//管理
 
-/*/路由*/
+/!*!/路由*!/
+*/
+
+require('./config/routes')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

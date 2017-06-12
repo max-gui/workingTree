@@ -1,44 +1,46 @@
+/*
 .table > thead > tr > th {
     border-bottom: 0px;
 }
 
 .table > thead > tr > th {
-    /*text-align: center;*/
-    border-right: 1px solid #444;
+    /!*text-align: center;*!/
+    border-right: 1px solid #ddd;
 
 }
 
 .table > tbody > tr > td {
-    /*text-align: center;*/
-    border-right: 1px solid #444;
+    /!*text-align: center;*!/
+    border-right: 1px solid #ddd;
 
 }
 
 .table > tbody > tr > th {
-    /*text-align: center;*/
-    border-right: 1px solid #444;
+    /!*text-align: center;*!/
+    border-right: 1px solid #ddd;
 }
 
 .icon-border {
     border: 0px;
 }
 
-/*.info-panel .ctrl-btn-group.btn-group-border{
+/!*.info-panel .ctrl-btn-group.btn-group-border{
 	border:0px;
-}*/
+}*!/
 .wind-info-title {
     line-height: 30px;
     margin: 0px;
 }
 
 .information-table-container {
-    height: 280px;
+    height: 302px;
     overflow-y: auto;
-    border: 1px solid #444;
+    border: 1px solid #ddd;
 }
 
 .event-table-container {
     height: 400px;
     overflow-y: auto;
-    border: 1px solid #444;
+    border: 1px solid #ddd;
 }
+*/

@@ -164,13 +164,15 @@
             <!-- /风机页左侧 -->
             <!-- 风机页右侧 -->
             <div class="col-fan-right">
-                <p class="wind-info-title">信息表</p>
+                <!--<p class="wind-info-title">信息表</p>-->
+                <input id="fanCode" type="hidden" value="<%= fanCode%>"/>
                 <!-- 表格 -->
                 <div id="xbxx-table" class="mCustomScrollbar information-table-container" data-mcs-theme="3d">
                     <table class="table  table-striped table-condensed table-hover">
                         <thead>
                         <tr>
                             <th>名称</th>
+                            <th>部位</th>
                             <th>方向</th>
                             <th>实时值</th>
                             <!--<th>名称</th>-->
@@ -179,44 +181,52 @@
                         </thead>
                         <tbody id="turbineStatus">
                         <tr>
-                            <th>传感器</th>
                             <th>-</th>
-                            <th><%= infoData.sensor_code%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>发电机转速</th>
                             <th>-</th>
-                            <th><%= infoData.gen_rotationRate%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>风轮转速</th>
                             <th>-</th>
-                            <th><%= infoData.windWheel_rotationRate%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>有功功率</th>
                             <th>-</th>
-                            <th><%= infoData.active_power%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>无功功率</th>
                             <th>-</th>
-                            <th><%= infoData.reactive_power%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>功率因数</th>
                             <th>-</th>
-                            <th><%= infoData.power_factor%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>液压系统压力</th>
                             <th>-</th>
-                            <th><%= infoData.oilSystem_pressure%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         <tr>
-                            <th>齿轮箱油温</th>
                             <th>-</th>
-                            <th><%= infoData.gearCase_oilTemp%></th>
+                            <th>-</th>
+                            <th>-</th>
+                            <th>-</th>
                         </tr>
                         </tbody>
                     </table>
@@ -308,6 +318,7 @@
 <!--by chen hai quan  -20170324-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script>
+    var fanCode=$("#fanCode").val();
     /**
      * ws设置
      */
@@ -322,15 +333,15 @@
         if (sessionStorage.length > 0) {
             var str = sessionStorage.getItem("turbineData");
             var Turbine = JSON.parse(str);
-//            console.log(str);
+//            console.log("str==>"+str);
 
             var _table_content;
             for (var i in Turbine) {
 //                console.log("keys：" + i + "values：" + Turbine[i]);
                 if (i == "F0020001001") {
-                    for (var key in Turbine["F0020001001"]) {
+                    for (var key in Turbine[fanCode]) {
 //                        console.log(Turbine["F0020001001"][key])
-                        _table_content += "<tr><th>" + key + "</th><th>-</th><th>" + Turbine["F0020001001"][key] + "</th></tr>";
+                        _table_content += "<tr><th>" + Turbine[fanCode][key].sensor_name + "</th><th>-</th><th>"+Turbine[fanCode][key].direction+"</th><th>" + Turbine[fanCode][key].rms + "</th></tr>";
                     }
                 }
 //                _table_content += "<tr><th>" + i + "</th><th>" + Turbine[i] + "</th><th>" + i + "</th><th>" + Turbine[i] + "</th></tr>";

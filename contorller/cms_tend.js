@@ -44,7 +44,7 @@ var get_tend_xy_q = function (sensor_code, callback) {
         return rd;
     });
 };
-
+/*
 router.get('/:sensor_code', function (req, res) {
     // console.log(sensor_code);
     // var promise = get_tend_q(req.params.sensor_code);
@@ -59,6 +59,7 @@ router.get('/:sensor_code', function (req, res) {
 
     });
 });
+*/
 
 var test = function (testtag, callback) {
     var deffered = Q.defer();
@@ -171,4 +172,12 @@ router.get('/testsinfo/:d', function (req, res) {
     });
 });
 
-module.exports = router;
+//module.exports = router;
+
+ exports.csmTend = function (req, res) {
+    var promise = get_tend_xy_q(req.params.sensor_code);
+    promise.then(function (data) {
+        res.send(data);
+
+    });
+}

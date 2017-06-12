@@ -66,19 +66,19 @@ $(function () {
     function changeStatus(dv, value) {
         if (value == 0) {
             $(dv).prev().children().attr("src", "/images/icons-fan-green.gif");
-            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-default");
+            $(dv).prev().attr("class", "pull-left fan-panel-icon fan-panel-icon-default");
         } else if (value == 1) {
             $(dv).prev().children().attr("src", "/images/icons-fan-green2.gif");
-            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+            $(dv).prev().attr("class", "pull-left fan-panel-icon fan-panel-icon-warning");
         } else if (value == 2) {
             $(dv).prev().children().attr("src", "/images/icons-fan-red.gif");
-            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger");
+            $(dv).prev().attr("class", "pull-left fan-panel-icon fan-panel-icon-danger");
         } else if (value == 3) {
             $(dv).prev().children().attr("src", "/images/icons-fan-red.gif");
-            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-warning");
+            $(dv).prev().attr("class", "pull-left fan-panel-icon fan-panel-icon-warning");
         } else {
             $(dv).prev().children().attr("src", "/images/icons-fan-gray.png");
-            $(dv).prev().attr("class", "pull-left fan-sample-icon fan-sample-icon-danger2");
+            $(dv).prev().attr("class", "pull-left fan-panel-icon fan-panel-icon-danger2");
         }
     }
 

@@ -27,6 +27,8 @@ var get_spectrum_q = function (sensor_code, callback) {
     return deffered.promise.nodeify(callback);
 };
 
+/*
+
 router.get('/:sensor_code', function (req, res) {
     // console.log(sensor_code);
     // var promise = get_tend_q(req.params.sensor_code);
@@ -52,3 +54,15 @@ router.get('/:sensor_code', function (req, res) {
 });
 
 module.exports = router;
+*/
+exports.spectrumData = function (req, res) {
+    var promise = get_spectrum_q(req.params.sensor_code);
+    promise.then(function (data) {
+        var ret = {
+            x : Array.apply(null, {length: data.data.sample_data.length}).map(Number.call, Number),
+            y : data.data.sample_data
+        };
+        res.send(ret);
+
+    });
+}

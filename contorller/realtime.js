@@ -132,7 +132,7 @@ var realtime = {
                     io.emit('cms_turbine_info', data);
                 });
             }
-        }, 5000);
+        }, 1000);
     }
 }
 

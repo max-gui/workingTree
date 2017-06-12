@@ -179,31 +179,31 @@
             <div class='fan-panel pull-left'>
                 <div class='fan-panel-bd clearfix'>
                     <% if(fitems.status == 0){%>
-                    <div id="<%= fitems.status%>" class='pull-left fan-panel-icon fan-panel-icon-default'>
+                    <div id="<%= fitems.status%>" class='  pull-left fan-panel-icon fan-panel-icon-default'>
                         <img id="<%= fitems.status%>" src='/images/icons-fan-green.gif'
                              class='img-circle mCS_img_loaded'/>
                     </div>
                     <%}%>
                     <% if(fitems.status == 1){%>
-                    <div id="<%= fitems.status%>" class='pull-left fan-sample-icon fan-sample-icon-warning'>
+                    <div id="<%= fitems.status%>" class='pull-left fan-panel-icon fan-panel-icon-warning'>
                         <img id="<%= fitems.status%>" src='/images/icons-fan-green2.gif'
                              class='img-circle mCS_img_loaded'/>
                     </div>
                     <%}%>
                     <% if(fitems.status == 2){%>
-                    <div id="<%= fitems.status%>" class='pull-left fan-sample-icon fan-sample-icon-danger'>
+                    <div id="<%= fitems.status%>" class='pull-left fan-panel-icon fan-panel-icon-danger'>
                         <img id="<%= fitems.status%>" src='/images/icons-fan-red.gif'
                              class='img-circle mCS_img_loaded'/>
                     </div>
                     <%}%>
                     <% if(fitems.status == 3){%>
-                    <div id="<%= fitems.status%>" class='pull-left fan-sample-icon fan-sample-icon-warning'>
+                    <div id="<%= fitems.status%>" class='pull-left fan-panel-icon fan-panel-icon-warning'>
                         <img id="<%= fitems.status%>" src='/images/icons-fan-red.gif'
                              class='img-circle mCS_img_loaded'/>
                     </div>
                     <%}%>
                     <% if(fitems.status == 4){%>
-                    <div id="<%= fitems.status%>" class="pull-left fan-sample-icon fan-sample-icon-danger2">
+                    <div id="<%= fitems.status%>" class="pull-left fan-panel-icon fan-panel-icon-danger2">
                         <img id="<%= fitems.status%>" src="/images/icons-fan-gray.png"
                              class="img-circle mCS_img_loaded">
                     </div>
@@ -312,7 +312,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+<script type="text/javascript" src="/javascripts/socket.io.js"></script>
 <script src="/javascripts/cms_channel.js"></script>
 </body>
 </html>
