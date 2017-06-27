@@ -74,6 +74,24 @@ var get_testtinfo = function (req, res) {
     });
 }
 
+var get_testtinfo_new = function (id) {
+
+
+    return circuit_device.deviceHelp.get_turbine_data_new_q(id).then(function (da) {
+
+        var result;
+        for (var key in da) {
+            var tmp = key.split("_");
+            if (tmp.length = 2 && tmp[1] == "Direct") {
+                result[tmp[0]] = da[key];
+            }
+        }
+
+        return result
+
+    });
+}
+
 var get_testsinfo = function (req, res) {
 
     var promise = redis.test("cms:senorData:*");
@@ -126,14 +144,30 @@ var realtime = {
                     io.emit('cms_sensor_info', data);
                 });
 
-                var promise3 = get_testtinfo();//wfid
-                promise3.then(function (data) {
-                    console.log(data);
-                    io.emit('cms_turbine_info', data);
-                });
+                // var promise3 = get_testtinfo();//wfid
+                // promise3.then(function (data) {
+                //     console.log(data);
+                //     io.emit('cms_turbine_info', data);
+                // });
             }
         }, 1000);
     }
 }
+
+var get_tail = function(){
+    return ".1200"
+}
+
+io.on('connection', function (socket) { /* … */
+    socket.on('turbine_sensor_info', function (id) { /* … */
+        var reall_id = id + get_tail();
+        var promise3 = get_testtinfo_new(reall_id);//wfid
+        promise3.then(function (data) {
+            console.log(data);
+            socket.emit('turbine_sensor_info', data);
+        });
+    });
+});
+
 
 module.exports = realtime;

@@ -395,6 +395,22 @@ var deviceHelp = {
         // });
         return deffered.promise.nodeify(callback);
     },
+    get_turbine_data_new_q: function (id, callback) {
+        var deffered = Q.defer();
+        // redis.init(function (client) {
+        console.log(id);
+        redis.client.hgetall(id, function (err, replies) {
+            for (var key in replies) {
+                console.log(key + ': ' + replies[key]);
+            }
+            ;
+            console.log("last");
+            console.dir(replies);
+            deffered.resolve(replies);
+        });
+        // });
+        return deffered.promise.nodeify(callback);
+    },
     get_sensor_data_q: function (tag, callback) {
         var deffered = Q.defer();
         // redis.init(function (client) {

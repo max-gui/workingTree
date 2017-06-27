@@ -1,8 +1,9 @@
 var MongoClient = require('mongodb').MongoClient;
+var Q = require('q');
 
 
 /**/
-//mongodbÊý¾Ý¿âÁ¬½ÓÏà¹ØÅäÖÃ
+//mongodbï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 var fs = require("fs");
 var basePath = process.cwd();
@@ -89,6 +90,20 @@ var mongoHelp = {
     },
 
     mongoInit: mongoInit,
+
+    mongoInitWithDb: function (callback) {
+		var deffer = Q.defer();
+		MongoClient.connect(url, function (err, db) {
+			//assert.equal(null, err);
+			// db.collection(collectName, function(err,col)
+			// {
+			// 	col.update()
+			// })
+			console.log("Connected correctly to server.");
+			deffer.resolve({err : err, db: db});
+		});
+		return deffer.promise.nodeify(callback);
+	},
 
     mongoFindAll: function (collectName, act) {
         var result = new Object();
